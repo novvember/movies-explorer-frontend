@@ -1,20 +1,22 @@
 .content {
-  box-sizing: border-box;
   width: 100%;
   max-width: 1280px;
   min-width: 320px;
   margin: 0 auto;
+}
+
+.section {
   padding: 0 18px;
 }
 
 @media (min-width: 768px) {
-  .content {
+  .section {
     padding-inline: 30px;
   }
 }
 
 @media (min-width: 1280px) {
-  .content {
+  .section {
     padding-inline: 70px;
   }
 }

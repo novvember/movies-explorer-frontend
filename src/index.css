@@ -17,7 +17,12 @@
   scroll-behavior: smooth;
   /* Шрифт для всей страницы */
   font-family: 'Inter', Helvetica, Arial, sans-serif;
-  /* Цвета страницы */
-  background-color: #fff;
-  color: #000;
+  /* Цветовая схема */
+  --surface: #fff;
+  --on-surface: #000;
+  --promo: #465DFF;
+  --on-promo: #fff;
+  /* Цвета страницы по умолчанию */
+  background-color: var(--surface);
+  color: var(--on-surface);
 }
