@@ -3,3 +3,21 @@
 
 /* Шрифт Inter*/
 @import url(./vendor/fonts/inter-web/inter.css);
+
+/* Общий стиль для приложения */
+.page {
+  /* Сглаживание */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  /* Плавная прокрутка */
+  scroll-behavior: smooth;
+  /* Шрифт для всей страницы */
+  font-family: 'Inter', Helvetica, Arial, sans-serif;
+  /* Цвета страницы */
+  background-color: #fff;
+  color: #000;
+}
