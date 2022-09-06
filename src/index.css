@@ -20,8 +20,10 @@
   /* Цветовая схема */
   --surface: #fff;
   --on-surface: #000;
-  --promo: #465DFF;
+  --promo: #465dff;
   --on-promo: #fff;
+  --background: #f5f5f5;
+  --on-background: #000;
   /* Цвета страницы по умолчанию */
   background-color: var(--surface);
   color: var(--on-surface);
