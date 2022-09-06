@@ -6,7 +6,7 @@
 }
 
 .section {
-  padding: 0 18px;
+  padding-inline: 18px;
 }
 
 @media (min-width: 768px) {
