@@ -4,6 +4,11 @@
 /* Шрифт Inter*/
 @import url(./vendor/fonts/inter-web/inter.css);
 
+html {
+  /* Плавная прокрутка */
+  scroll-behavior: smooth;
+}
+
 /* Общий стиль для приложения */
 .page {
   /* Сглаживание */
@@ -13,8 +18,6 @@
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
-  /* Плавная прокрутка */
-  scroll-behavior: smooth;
   /* Шрифт для всей страницы */
   font-family: 'Inter', Helvetica, Arial, sans-serif;
   /* Цветовая схема */
