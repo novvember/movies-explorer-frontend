@@ -10,7 +10,7 @@ import Techs from '../Techs/Techs';
 function Landing() {
   return (
     <>
-      <Header>
+      <Header isThemed={true}>
         <Navigation />
       </Header>
       <main>

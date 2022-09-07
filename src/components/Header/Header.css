@@ -1,2 +1,25 @@
 .header {
+  padding-block: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header_themed {
+  background-color: var(--promo);
+}
+
+.header__main-link {
+  transition: opacity 0.3s;
+}
+
+.header__main-link:hover {
+  opacity: 0.7;
+}
+
+.header__logo {
+  display: block;
+  width: 38px;
+  aspect-ratio: 1;
+  object-fit: contain;
 }
