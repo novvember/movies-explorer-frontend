@@ -1,4 +1,5 @@
 import AboutProject from '../AboutProject/AboutProject';
+import Footer from '../Footer/Footer';
 import NavTab from '../NavTab/NavTab';
 import Promo from '../Promo/Promo';
 import Student from '../Student/Student';
@@ -15,7 +16,7 @@ function Landing() {
         <Techs />
         <Student />
       </main>
-      <footer>footer</footer>
+      <Footer />
     </>
   );
 }

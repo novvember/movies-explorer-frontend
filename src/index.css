@@ -33,6 +33,8 @@ html {
   --background-variant-secondary: #e8e8e8;
   --primary: #2be080;
   --on-primary: #000;
+  --footer: #fafafa;
+  --on-footer: #a0a0a0;
   /* Цвета страницы по умолчанию */
   background-color: var(--surface);
   color: var(--on-surface);
