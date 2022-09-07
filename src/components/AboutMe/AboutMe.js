@@ -6,7 +6,7 @@ function AboutMe() {
     <article className="about-me">
       <img src={photo} alt="Фотография Дмитрия" className="about-me__photo" />
       <div className="about-me__description">
-        <p className="about-me__name">Дмитрий</p>
+        <h3 className="about-me__name">Дмитрий</h3>
         <p className="about-me__subtitle">Фронтенд-разработчик, 34&nbsp;года</p>
         <p className="about-me__text">
           Нравится продумывать логику, структуру, а&nbsp;потом реализовывать
