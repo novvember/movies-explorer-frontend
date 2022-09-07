@@ -1,0 +1,134 @@
+.about-project {
+  color: var(--on-surface);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 60px;
+}
+
+@media (min-width: 768px) {
+  .about-project {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 30px;
+    row-gap: 90px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .about-project {
+    column-gap: 40px;
+    row-gap: 110px;
+  }
+}
+
+.about-project__text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .about-project__text {
+    gap: 22px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .about-project__text {
+    gap: 26px;
+  }
+}
+
+.about-project__title {
+  margin: 0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.22;
+  letter-spacing: -0.04em;
+}
+
+@media (min-width: 768px) {
+  .about-project__title {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+}
+
+.about-project__subtitle {
+  margin: 0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+@media (min-width: 768px) {
+  .about-project__subtitle {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+}
+
+@media (min-width: 1280px) {
+  .about-project__subtitle {
+    font-size: 14px;
+    line-height: 1.43;
+  }
+}
+
+.about-project__illustration {
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  row-gap: 10px;
+}
+
+@media (min-width: 768px) {
+  .about-project__illustration {
+    grid-template-columns: 1fr 4fr;
+    row-gap: 14px;
+  }
+}
+
+.about-project__time-block {
+  margin: 0;
+  grid-row: 1;
+  padding-block: 11px;
+  background-color: var(--background-variant);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.18;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .about-project__time-block {
+    padding-block: 9px;
+    font-size: 14px;
+    line-height: 1.21;
+  }
+}
+
+.about-project__time-block:nth-of-type(4n - 3) {
+  background-color: var(--primary);
+  color: var(--on-primary);
+}
+
+.about-project__time-caption {
+  margin: 0;
+  grid-row: 2;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.18;
+  text-align: center;
+  color: var(--on-surface-variant);
+}
+
+@media (min-width: 768px) {
+  .about-project__time-caption {
+    font-size: 14px;
+    line-height: 1.21;
+  }
+}
