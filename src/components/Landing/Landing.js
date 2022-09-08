@@ -2,7 +2,6 @@ import AboutProject from '../AboutProject/AboutProject';
 import AuthLinks from '../AuthLinks/AuthLinks';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
-import Navigation from '../Navigation/Navigation';
 import NavTab from '../NavTab/NavTab';
 import Promo from '../Promo/Promo';
 import Student from '../Student/Student';
