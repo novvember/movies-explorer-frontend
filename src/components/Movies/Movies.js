@@ -9,6 +9,9 @@ function Movies() {
       <Header>
         <Navigation />
       </Header>
+      <Header isThemed>
+        <Navigation isThemed />
+      </Header>
       <main>
         Содержимое
       </main>

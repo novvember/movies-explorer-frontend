@@ -1,8 +1,9 @@
+import classNames from 'classnames';
 import React from 'react';
 import NavigationLink from '../NavigationLink/NavigationLink';
 import './Navigation.css';
 
-function Navigation({ hasLinkToMain = true }) {
+function Navigation({ hasLinkToMain = true, isThemed = false }) {
   const [isOpen, setIsOpen] = React.useState(false);
 
   function toggleMenu() {
@@ -30,7 +31,7 @@ function Navigation({ hasLinkToMain = true }) {
   });
 
   return (
-    <div className="navigation">
+    <div className={classNames('navigation', {navigation_themed: isThemed})}>
       <button
         type="button"
         className="navigation__open-button"

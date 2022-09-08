@@ -40,6 +40,10 @@
   }
 }
 
+.navigation_themed .navigation__open-button {
+  background-image: url(../../images/icon__menu_white.svg);
+}
+
 /* Всё меню, включая оверлей */
 .navigation__menu {
   /* Положение */
@@ -228,6 +232,10 @@
     font-size: 13px;
     line-height: 1.38;
   }
+
+  .navigation_themed .navigation__link {
+    color: var(--on-promo);
+  }
 }
 
 .navigation__link_active {
@@ -263,5 +271,9 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 1.14;
+  }
+
+  .navigation_themed .navigation__link_type_account {
+    background-color: var(--promo-variant);
   }
 }
