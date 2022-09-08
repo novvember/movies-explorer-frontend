@@ -1,7 +1,7 @@
 import React from 'react';
 import './Navigation.css';
 
-function Navigation() {
+function Navigation({ hasLinkToMain = true }) {
   const [isOpen, setIsOpen] = React.useState(false);
 
   function toggleMenu() {
@@ -25,7 +25,7 @@ function Navigation() {
 
     return () => {
       document.removeEventListener('keydown', handleEscClose);
-    }
+    };
   });
 
   return (
@@ -52,11 +52,14 @@ function Navigation() {
           ></button>
 
           <ul className="navigation__list">
-            <li className="navigation__list-item">
-              <a className="navigation__link" href="#test">
-                Главная
-              </a>
-            </li>
+            {hasLinkToMain && (
+              <li className="navigation__list-item navigation__list-item_type_main-page">
+                <a className="navigation__link" href="#test">
+                  Главная
+                </a>
+              </li>
+            )}
+
             <li className="navigation__list-item">
               <a
                 className="navigation__link navigation__link_active"
@@ -65,11 +68,13 @@ function Navigation() {
                 Фильмы
               </a>
             </li>
+
             <li className="navigation__list-item">
               <a className="navigation__link" href="#test">
                 Сохранённые фильмы
               </a>
             </li>
+
             <li className="navigation__list-item">
               <a
                 className="navigation__link navigation__link_type_account"

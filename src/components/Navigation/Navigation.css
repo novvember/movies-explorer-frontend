@@ -191,15 +191,15 @@
 }
 
 @media (min-width: 1280px) {
-  .navigation__list-item:first-child {
-    display: none;
+  .navigation__list-item:last-child {
+    margin-top: 0;
+    margin-left: auto;
   }
 }
 
 @media (min-width: 1280px) {
-  .navigation__list-item:last-child {
-    margin-top: 0;
-    margin-left: auto;
+  .navigation__list-item_type_main-page {
+    display: none;
   }
 }
 
