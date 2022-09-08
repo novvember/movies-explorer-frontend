@@ -8,6 +8,10 @@ function Navigation() {
     setIsOpen((state) => !state);
   }
 
+  function handleOverlayClick(event) {
+    if (event.target === event.currentTarget) toggleMenu();
+  }
+
   return (
     <div className="navigation">
       <button
@@ -21,6 +25,7 @@ function Navigation() {
         className={`navigation__menu${
           isOpen ? ' navigation__menu_opened' : ''
         }`}
+        onClick={handleOverlayClick}
       >
         <nav className="navigation__panel">
           <button
