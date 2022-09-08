@@ -20,18 +20,31 @@
 [`novvember.github.io/movies-explorer-frontend`](https://novvember.github.io/movies-explorer-frontend)
 
 На отдельном сервере в Яндекс.Облаке:
-[`movies.novvember.nomoredomains.sbs`](https://movies.novvember.nomoredomains.sbs)
+[`movies.novvember.nomoredomains.sbs`](https://movies.novvember.nomoredomains.sbs) (пока не задеплоено)
 
 ### Используемые API
 - собственное API для регистрации/авторизации и хранения сохраненных фильмов:
 `https://api.movies.novvember.nomoredomains.sbs`
 - публичное API для получения коллекции фильмов BeatFilm `https://api.nomoreparties.co/beatfilm-movies`
 
+## Макет в Figma
+[`figma.com/file/Bb8b92xns1lLgMiKkTwRPp`](https://www.figma.com/file/Bb8b92xns1lLgMiKkTwRPp)
+
 
 ## Функциональность
+- Адаптивная, семантическая верстка
+- Лендинг с описанием работы, а также с  информацией обо мне и ссылками на другие работы
+- Отдельная страница с приложением по поиску и сохранению фильмов
+- Регистрация/авторизация пользователей
+- Сохранение фильмов в личный кабинет
+- Редактирование информации о пользователе
 -
 
 ## Стек технологий
+- HTML5, CSS3, БЭМ
+- React
+- React Router 6
+- Работа с API
 -
 
 ## Статус разработки
