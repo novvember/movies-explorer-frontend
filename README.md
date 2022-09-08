@@ -28,7 +28,7 @@
 - публичное API для получения коллекции фильмов BeatFilm `https://api.nomoreparties.co/beatfilm-movies`
 
 ## Макет в Figma
-[`figma.com/file/Bb8b92xns1lLgMiKkTwRPp`](https://www.figma.com/file/Bb8b92xns1lLgMiKkTwRPp)
+[`figma.com/file/Bb8b92xns1lLgMiKkTwRPp/Diploma-(Kalugin)?node-id=891%3A3857`](https://www.figma.com/file/Bb8b92xns1lLgMiKkTwRPp/Diploma-(Kalugin)?node-id=891%3A3857)
 
 
 ## Функциональность
