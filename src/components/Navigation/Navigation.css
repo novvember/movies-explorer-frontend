@@ -23,7 +23,7 @@
   background-repeat: no-repeat;
   background-size: contain;
   /* Анимация */
-  transition: all 0.3s;
+  transition: opacity 0.3s, transform 0.3s;
 }
 
 .navigation__open-button:hover {
@@ -55,7 +55,7 @@
   /* Анимация */
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s;
+  transition: opacity 0.3s, visibility 0.3s;
 }
 
 .navigation__menu_opened {
@@ -134,7 +134,7 @@
   background-repeat: no-repeat;
   background-size: contain;
   /* Анимация */
-  transition: all 0.3s;
+  transition: opacity 0.3s, transform 0.3s;
 }
 
 .navigation__close-button:hover {
