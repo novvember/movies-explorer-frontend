@@ -17,6 +17,9 @@ function NavigationLink({ isLinkToMain = false, title, to, isLinkToProfile }) {
           )
         }
         to={to}
+        style={({ isActive }) => {
+          return isActive ? { pointerEvents: 'none' } : {};
+        }}
       >
         {title}
       </NavLink>
