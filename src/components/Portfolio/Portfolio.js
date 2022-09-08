@@ -32,7 +32,7 @@ function Portfolio() {
             target="_blank"
             rel="noreferrer"
           >
-            Приложение с&nbsp;фотографиями и&nbsp;лайками Mesto
+            Mesto&nbsp;&mdash; приложение с&nbsp;фотографиями и&nbsp;лайками
           </a>
         </li>
         <li className="portfolio__list-item">
@@ -42,8 +42,7 @@ function Portfolio() {
             target="_blank"
             rel="noreferrer"
           >
-            Приложение с&nbsp;визуализацией алгоритмов сортировки Yet Another
-            Sorting Visualization
+            Yet Another Sorting Visualization&nbsp;&mdash; приложение с&nbsp;визуализацией алгоритмов сортировки
           </a>
         </li>
       </ul>
