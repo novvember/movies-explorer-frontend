@@ -1,7 +1,7 @@
 .movie-card {
   --gap: 14px;
   display: block;
-  max-width: 360px;
+  max-width: 600px;
   padding-block: var(--gap);
   /* Внешний вид */
   background-color: var(--card);

@@ -1,0 +1,24 @@
+.movie-card-list {
+  /* Сброс */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  /* Расположение элементов */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .movie-card-list {
+    column-gap: 24px;
+    row-gap: 35px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .movie-card-list {
+    gap: 32px;
+  }
+}
