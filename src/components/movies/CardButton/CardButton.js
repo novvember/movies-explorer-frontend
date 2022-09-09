@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import './CardButton.css';
 
-function CardButton({ className, type }) {
+function CardButton({ className, type, onClick }) {
   const TYPE_CONFIG = {
     save: {
       text: 'Сохранить',
@@ -28,7 +28,10 @@ function CardButton({ className, type }) {
         'card-button',
       )}
       type="button"
-      {...(TYPE_CONFIG[type].alt ? {'aria-label': TYPE_CONFIG[type].alt } : {})}
+      {...(TYPE_CONFIG[type].alt
+        ? { 'aria-label': TYPE_CONFIG[type].alt }
+        : {})}
+      onClick={onClick}
     >
       {TYPE_CONFIG[type].text}
     </button>
