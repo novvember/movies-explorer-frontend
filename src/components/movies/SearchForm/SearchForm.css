@@ -1,0 +1,105 @@
+.search-form {
+  padding-top: 75px;
+  padding-bottom: 50px;
+  display: grid;
+  row-gap: 40px;
+  grid-template-columns: 1fr min-content;
+  grid-template-areas:
+    'input button'
+    'checkbox checkbox';
+}
+
+@media (min-width: 768px) {
+  .search-form {
+    padding-top: 67px;
+    padding-bottom: 60px;
+    row-gap: 30px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .search-form {
+    padding-top: 57px;
+    padding-bottom: 47px;
+    row-gap: 32px;
+  }
+}
+
+.search-form__input {
+  grid-area: input;
+  grid-column: 1/-1;
+  border: none;
+  border-bottom: 1px solid var(--background-variant-secondary);
+  padding-block: 15px;
+  transition: border-bottom-color 0.3s;
+  padding-right: 60px; /* Space for input button */
+  /* Текст */
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.22;
+  color: var(--on-surface);
+}
+
+@media (min-width: 768px) {
+  .search-form__input {
+    padding-block: 13px;
+    font-size: 28px;
+    line-height: 1.21;
+  }
+}
+
+.search-form__input:focus {
+  border-bottom-color: var(--primary);
+  outline: none;
+}
+
+.search-form__input::placeholder {
+  color: var(--on-surface-variant);
+}
+
+.search-form__checkbox {
+  grid-area: checkbox;
+  justify-self: center;
+}
+
+@media (min-width: 768px) {
+  .search-form__checkbox {
+    justify-self: end;
+  }
+}
+
+@media (min-width: 1280px) {
+  .search-form__checkbox {
+    justify-self: start;
+  }
+}
+
+.search-form__button {
+  /* Расположение */
+  grid-area: button;
+  align-self: center;
+  /* Сброс */
+  cursor: pointer;
+  border: none;
+  background-color: var(--secondary);
+  color: var(--on-secondary);
+  /* Размеры */
+  padding: 8px 10px;
+  border-radius: 48px;
+  /* Текст */
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1.64;
+  /* Анимация */
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.search-form__button:hover {
+  opacity: 0.8;
+}
+
+.search-form__button:active {
+  transform: scale(0.8);
+}
