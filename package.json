@@ -16,6 +16,7 @@
   "scripts": {
     "predeploy": "set PUBLIC_URL=/movies-explorer-frontend&&npm run build",
     "deploy": "set PUBLIC_URL=/movies-explorer-frontend&&gh-pages -d build",
+    "deployProduction": "scp -r ./build/* user@51.250.92.77:/home/user/movies-explorer-frontend/build",
     "start": "react-scripts start",
     "build": "react-scripts build"
   },
