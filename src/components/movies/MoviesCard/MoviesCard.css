@@ -10,9 +10,10 @@
   color: var(--on-card);
   /* Расположение элементов */
   display: grid;
-  grid-template-columns: 1fr max-content;
   column-gap: var(--gap);
   row-gap: var(--gap);
+  grid-template-columns: 1fr max-content;
+  grid-template-rows: 1fr auto auto;
   grid-template-areas:
     'name duration'
     'thumbnail thumbnail'

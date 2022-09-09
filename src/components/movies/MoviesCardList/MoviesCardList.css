@@ -7,18 +7,22 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 14px;
-  justify-content: center;
+  /* Отступы */
+  padding-top: 40px;
+  padding-bottom: 30px;
 }
 
 @media (min-width: 768px) {
   .movie-card-list {
     column-gap: 24px;
     row-gap: 35px;
+    padding-top: 70px;
   }
 }
 
 @media (min-width: 1280px) {
   .movie-card-list {
     gap: 32px;
+    padding-bottom: 10px;
   }
 }
