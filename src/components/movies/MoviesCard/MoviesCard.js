@@ -2,6 +2,7 @@ import './MoviesCard.css';
 
 import CardButton from '../CardButton/CardButton';
 import React from 'react';
+import getNumDeclination from '../../../utils/getNumDeclination';
 
 function MoviesCard({ name, duration, thumbnail }) {
   // DEMO FOR BUTTON CLICK
@@ -14,7 +15,11 @@ function MoviesCard({ name, duration, thumbnail }) {
   return (
     <li className="movie-card">
       <h3 className="movie-card__name">{name}</h3>
-      <p className="movie-card__duration">{duration} минут</p>
+      <p className="movie-card__duration">{`${duration} ${getNumDeclination(duration, [
+        'минута',
+        'минуты',
+        'минут',
+      ])}`}</p>
       <img
         src={thumbnail}
         alt={`Кадр из фильма ${name}`}
