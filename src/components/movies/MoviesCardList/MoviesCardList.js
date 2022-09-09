@@ -5,6 +5,7 @@ import './MoviesCardList.css';
 import testData from '../../../utils/testData';
 
 function MoviesCardList() {
+  // DEMO FOR GETTING AND SETTING MOVIE CARDS
   const [movies, setMovies] = React.useState([]);
 
   function testGetMovies() {
