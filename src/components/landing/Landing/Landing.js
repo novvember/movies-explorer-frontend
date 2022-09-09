@@ -1,11 +1,11 @@
 import AboutProject from '../AboutProject/AboutProject';
-import AuthLinks from '../AuthLinks/AuthLinks';
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
+import AuthLinks from '../../common/AuthLinks/AuthLinks';
+import Footer from '../../common/Footer/Footer';
+import Header from '../../common/Header/Header';
 import NavTab from '../NavTab/NavTab';
 import Promo from '../Promo/Promo';
 import Student from '../Student/Student';
-import Techs from '../Techs/Techs';
+import Techs from '../../landing/Techs/Techs';
 
 function Landing() {
   return (

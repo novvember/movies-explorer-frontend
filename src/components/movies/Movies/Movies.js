@@ -1,6 +1,6 @@
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
-import Navigation from '../Navigation/Navigation';
+import Footer from '../../common/Footer/Footer';
+import Header from '../../common/Header/Header';
+import Navigation from '../../common/Navigation/Navigation';
 import './Movies.css';
 
 function Movies() {
@@ -8,9 +8,6 @@ function Movies() {
     <>
       <Header>
         <Navigation />
-      </Header>
-      <Header isThemed>
-        <Navigation isThemed />
       </Header>
       <main>
         Содержимое

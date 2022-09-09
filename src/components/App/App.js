@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
-import Landing from '../Landing/Landing';
-import Movies from '../Movies/Movies';
+import Landing from '../landing/Landing/Landing';
+import Movies from '../movies/Movies/Movies';
 import Page404 from '../Page404/Page404';
 import './App.css';
 

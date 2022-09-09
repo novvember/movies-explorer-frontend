@@ -18,7 +18,7 @@
   width: 44px;
   aspect-ratio: 1;
   /* Иконка */
-  background-image: url(../../images/icon__menu.svg);
+  background-image: url(../../../images/icon__menu.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -41,7 +41,7 @@
 }
 
 .navigation_themed .navigation__open-button {
-  background-image: url(../../images/icon__menu_white.svg);
+  background-image: url(../../../images/icon__menu_white.svg);
 }
 
 /* Всё меню, включая оверлей */
@@ -133,7 +133,7 @@
   width: 31px;
   aspect-ratio: 1;
   /* Иконка */
-  background-image: url(../../images/icon__close.svg);
+  background-image: url(../../../images/icon__close.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;

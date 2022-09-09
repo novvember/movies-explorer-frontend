@@ -4,7 +4,7 @@
   justify-content: center;
   background-color: var(--promo);
   color: var(--on-promo);
-  background-image: url(../../images/promo-background.svg);
+  background-image: url(../../../images/promo-background.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 248px auto;
