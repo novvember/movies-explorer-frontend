@@ -1,14 +1,17 @@
 import './MoviesCard.css';
 
-import photo from '../../../images/student-photo.jpg';
 import CardButton from '../CardButton/CardButton';
 
-function MoviesCard() {
+function MoviesCard({ name, duration, thumbnail }) {
   return (
     <li className="movie-card">
-      <h3 className="movie-card__name">В погоне за Бэнкси</h3>
-      <p className="movie-card__duration">27 минут</p>
-      <img src={photo} alt="" className="movie-card__thumbnail" />
+      <h3 className="movie-card__name">{name}</h3>
+      <p className="movie-card__duration">{duration} минут</p>
+      <img
+        src={thumbnail}
+        alt={`Кадр из фильма ${name}`}
+        className="movie-card__thumbnail"
+      />
       <CardButton className="movie-card__button" type="delete" />
     </li>
   );
