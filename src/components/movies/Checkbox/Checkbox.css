@@ -1,0 +1,107 @@
+.checkbox {
+  /* Расположение чекбокса и подписи */
+  color: var(--on-surface);
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 12px;
+  /* Анимация */
+  transition: opacity 0.3s;
+  cursor: pointer;
+}
+
+@media (min-width: 1280px) {
+  .checkbox {
+    gap: 16px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .checkbox {
+    flex-direction: row;
+  }
+}
+
+/* При наведении */
+.checkbox:hover {
+  opacity: 0.8;
+}
+
+/* Скрытие системного чекбокса */
+.checkbox__system-checkbox {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+/* Контейнер, в котором движется рычаг (выключенное состояние) */
+.checkbox__custom-checkbox {
+  /* Позиционирование */
+  position: relative;
+  /* Размеры */
+  width: 36px;
+  height: 20px;
+  border-radius: 20px;
+  box-sizing: border-box;
+  /* Цвет */
+  background-color: var(--checkbox-disabled);
+  /* Анимация */
+  transition: background-color 0.3s ease-in;
+}
+
+/* Нажатое состояние - фон контейнера */
+.checkbox__system-checkbox:checked + .checkbox__custom-checkbox {
+  background-color: var(--checkbox-enabled);
+}
+
+/* Неактивное состояние */
+.checkbox__system-checkbox:disabled + .checkbox__custom-checkbox {
+  opacity: 0.3;
+}
+
+/* Рычаг (выключенное состояние) */
+.checkbox__custom-checkbox::after {
+  content: '';
+  /* Размеры */
+  box-sizing: border-box;
+  height: 40%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  /* Положение */
+  position: absolute;
+  top: 50%;
+  left: 10px; /* Половина border-radius */
+  transform: translate(-50%, -50%);
+  /* Цвет */
+  background-color: var(--on-checkbox-disabled);
+  transition: left 0.3s ease-in;
+}
+
+/* Нажатое состояние - положение ручага */
+.checkbox__system-checkbox:checked + .checkbox__custom-checkbox::after {
+  left: 26px;
+}
+
+.checkbox__label {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.64;
+}
+
+@media (min-width: 768px) {
+  .checkbox__label {
+    font-size: 13px;
+    line-height: 1.38;
+  }
+}
+
+/* В фокусе */
+.checkbox__system-checkbox:focus ~ .checkbox__label {
+  text-decoration: underline;
+  text-decoration-line: solid;
+  text-decoration-color: var(--primary);
+  text-underline-offset: 5px;
+}

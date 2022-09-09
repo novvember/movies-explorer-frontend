@@ -39,12 +39,18 @@ html {
   --footer: #fafafa;
   --on-footer: #a0a0a0;
   --account-button: #f9f9f9;
+  --checkbox-disabled: #ebebeb;
+  --checkbox-enabled: var(--primary);
+  --on-checkbox-disabled: #f5f5f5;
+  --on-checkbox-enabled: #fff;
   /* Цвета страницы по умолчанию */
   background-color: var(--surface);
   color: var(--on-surface);
 }
 
-a:focus, button:focus, input:focus {
+a:focus,
+button:focus,
+input:focus {
   outline-offset: 5px;
   outline-color: var(--primary);
 }

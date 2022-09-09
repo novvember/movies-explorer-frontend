@@ -5,7 +5,7 @@ function SearchForm() {
   return (
     <form className="search-form section">
       <input type="text" className="search-form__input" placeholder="Фильм" />
-      <Checkbox className="search-form__checkbox" />
+      <Checkbox title="Короткометражки" className="search-form__checkbox" />
       <button type="submit" className="search-form__button">
         Найти
       </button>
