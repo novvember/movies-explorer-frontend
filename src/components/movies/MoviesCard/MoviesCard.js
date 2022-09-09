@@ -4,7 +4,7 @@ import CardButton from '../CardButton/CardButton';
 import React from 'react';
 
 function MoviesCard({ name, duration, thumbnail }) {
-  // TESTING BUTTON CLICK
+  // DEMO FOR BUTTON CLICK
   const [isSaved, setIsSaved] = React.useState(false);
 
   function handleClick() {
