@@ -74,5 +74,6 @@
 
 .movie-card__button {
   grid-area: button;
+  justify-self: center;
   margin-inline: var(--gap);
 }

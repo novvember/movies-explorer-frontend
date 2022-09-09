@@ -1,0 +1,41 @@
+.card-button {
+  /* Сброс */
+  border: none;
+  cursor: pointer;
+  /* Анимация */
+  transition: transform 0.3s, opacity 0.3s;
+  /* Текст */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 0.92;
+  text-align: center;
+  color: var(--on-movie-button);
+  /* Размеры */
+  padding: 9px 15px;
+  border-radius: 30px;
+  min-height: 29px;
+  min-width: 100px;
+  /* Иконка */
+  background-color: var(--movie-button);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 8px auto;
+}
+
+.card-button:active {
+  transform: scale(0.8);
+}
+
+.card-button:hover {
+  opacity: 0.8;
+}
+
+.card-button_type_done {
+  background-color: var(--movie-button-done);
+  background-image: url(../../../images/icon__done.svg);
+}
+
+.card-button_type_delete {
+  background-image: url(../../../images/icon__delete.svg);
+}

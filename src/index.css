@@ -46,6 +46,10 @@ html {
   --card: #fdfdfd;
   --on-card: #000;
   --on-card-variant: #a0a0a0;
+  --movie-button: #f9f9f9;
+  --on-movie-button: #000;
+  --movie-button-done: #ee3465;
+  --on-movie-button-done: #fff;
   /* Цвета страницы по умолчанию */
   background-color: var(--surface);
   color: var(--on-surface);
