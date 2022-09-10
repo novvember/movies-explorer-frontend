@@ -4,7 +4,7 @@ import './MoviesCardList.css';
 
 import testData from '../../../utils/testData';
 
-function MoviesCardList() {
+function MoviesCardList({ type }) {
   // DEMO FOR GETTING AND SETTING MOVIE CARDS
   const [movies, setMovies] = React.useState([]);
 
@@ -28,6 +28,7 @@ function MoviesCardList() {
               'https://api.nomoreparties.co/' +
               movie.image.formats.thumbnail.url
             }
+            type={type}
           />
         );
       })}

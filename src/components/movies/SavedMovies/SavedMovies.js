@@ -13,7 +13,7 @@ function SavedMovies() {
       </Header>
       <main>
         <SearchForm />
-        <MoviesCardList />
+        <MoviesCardList type="saved" />
       </main>
       <Footer />
     </>
