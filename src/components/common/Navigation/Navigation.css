@@ -31,7 +31,7 @@
 }
 
 .navigation__open-button:active {
-  transform: scale(0.8);
+  transform: scale(0.9);
 }
 
 @media (min-width: 1280px) {
@@ -146,7 +146,7 @@
 }
 
 .navigation__close-button:active {
-  transform: scale(0.8);
+  transform: scale(0.9);
 }
 
 @media (min-width: 768px) {
