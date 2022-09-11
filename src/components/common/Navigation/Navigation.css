@@ -278,7 +278,9 @@
   }
 }
 
-.navigation__link_active.navigation__link_type_account {
-  text-decoration: none;
-  outline: 2px solid;
+@media (min-width: 768px) {
+  .navigation__link_active.navigation__link_type_account {
+    text-decoration: none;
+    outline: 2px solid;
+  }
 }
