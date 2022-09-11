@@ -106,7 +106,7 @@
 
 .auth__input {
   display: block;
-  border: none;
+  border: 1px solid transparent;
   background-color: var(--auth-input);
   border-radius: 8px;
   width: 100%;
@@ -116,11 +116,12 @@
   font-weight: 500;
   font-size: 13px;
   line-height: 1.23;
+  transition: border 0.3s;
 }
 
 .auth__input:focus {
-  outline-offset: 0;
-  outline: 1px solid var(--primary);
+  outline: none;
+  border: 1px solid var(--primary);
 }
 
 .auth__error {
