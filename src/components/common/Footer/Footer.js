@@ -2,7 +2,7 @@ import './Footer.css';
 
 function Footer() {
   return (
-    <footer className="footer section">
+    <footer className="footer section content__footer">
       <p className="footer__text">
         Учебный проект Яндекс.Практикума &times; BeatFilm.
       </p>
