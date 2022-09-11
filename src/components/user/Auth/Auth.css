@@ -137,34 +137,6 @@
 
 .auth__submit-button {
   margin-top: auto;
-  cursor: pointer;
-  border: none;
-  background-color: var(--secondary);
-  border-radius: 3px;
-  padding: 15px;
-  /* Текст */
-  color: var(--on-secondary);
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.25;
-  text-align: center;
-  /* Анимация */
-  transition: opacity.3s, transform 0.3s;
-}
-
-.auth__submit-button:hover {
-  opacity: 0.8;
-}
-
-.auth__submit-button:active {
-  transform: scale(0.9);
-}
-
-.auth__submit-button:disabled {
-  background-color: var(--button-disabled);
-  color: var(--on-button-disabled);
-  pointer-events: none;
 }
 
 .auth__hint {

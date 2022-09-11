@@ -1,6 +1,7 @@
 import './Auth.css';
 import logo from '../../../images/logo.svg';
 import { Link } from 'react-router-dom';
+import SubmitButton from '../SubmitButton/SubmitButton';
 
 function Auth({ mode = 'register' }) {
   const MODES = {
@@ -58,9 +59,10 @@ function Auth({ mode = 'register' }) {
             />
           </label>
           <p className="auth__error">Что-то пошло не так...</p>
-          <button className="auth__submit-button" type="submit">
-            Зарегистрироваться
-          </button>
+          <SubmitButton
+            title="Зарегистрироваться"
+            className="auth__submit-button"
+          />
         </form>
         {MODES[mode].hint}
       </div>
