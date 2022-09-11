@@ -17,7 +17,7 @@ function Movies() {
         <SearchForm />
         <MoviesCardList type="all" />
         <More />
-        <Preloader />
+        {/* <Preloader /> will ve set later */}
       </main>
       <Footer />
     </>
