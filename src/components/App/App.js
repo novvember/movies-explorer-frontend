@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import Landing from '../landing/Landing/Landing';
 import Movies from '../movies/Movies/Movies';
-import ProfilePage from '../movies/ProfilePage/ProfilePage';
+import ProfilePage from '../ProfilePage/ProfilePage';
 import SavedMovies from '../movies/SavedMovies/SavedMovies';
 import Page404 from '../Page404/Page404';
 import './App.css';
