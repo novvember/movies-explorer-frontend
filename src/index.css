@@ -50,6 +50,9 @@ html {
   --on-movie-button: #000;
   --movie-button-done: #ee3465;
   --on-movie-button-done: #fff;
+  --error: #ee3465;
+  --button-disabled: #f8f8f8;
+  --on-button-disabled: #c2c2c2;
   /* Цвета страницы по умолчанию */
   background-color: var(--surface);
   color: var(--on-surface);
@@ -60,4 +63,18 @@ button:focus,
 input:focus {
   outline-offset: 5px;
   outline-color: var(--primary);
+}
+
+.content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content__footer {
+  margin-top: auto; /* Футер всегда внизу страницы */
+}
+
+.content__stretched-element {
+  flex-grow: 1; /* Расятигвает нуный элемент на всю высоту окна */
 }
