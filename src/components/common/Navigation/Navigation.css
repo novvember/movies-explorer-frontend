@@ -277,3 +277,8 @@
     background-color: var(--promo-variant);
   }
 }
+
+.navigation__link_active.navigation__link_type_account {
+  text-decoration: none;
+  outline: 2px solid;
+}

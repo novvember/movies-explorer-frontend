@@ -1,6 +1,5 @@
 .profile {
   color: var(--on-surface);
-  /* Отступы */
   padding: 70px 30px 40px;
   /* Расположение элементов */
   display: flex;
