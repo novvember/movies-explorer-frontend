@@ -74,7 +74,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 20px;
-  padding-block: 10px;
+  padding-block: 0;
   border-bottom: 1px solid var(--background-variant-secondary);
 }
 
@@ -97,7 +97,8 @@
   border: none;
   /* Размер */
   flex-grow: 1;
-  padding-block: 6px;
+  padding-block: 16px;
+  border-radius: 8px;
   /* Текст */
   font-style: normal;
   font-weight: 400;
@@ -105,8 +106,8 @@
   line-height: 1.18;
   text-align: right;
   /* Анимация */
-  border-bottom: 1px solid transparent;
-  transition: opacity 0.3s, border-bottom 0.3s;
+  background-color: transparent;
+  transition: opacity 0.3s, background-color 0.3s;
 }
 
 .profile__input:disabled {
@@ -115,7 +116,7 @@
 
 .profile__input:focus {
   outline: none;
-  border-bottom: 1px dotted var(--primary);
+  background-color: var(--auth-input);
 }
 
 .profile__error-message {
