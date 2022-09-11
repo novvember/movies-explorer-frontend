@@ -22,6 +22,7 @@
 .auth__container {
   width: 100%;
   max-width: 396px;
+  height: 560px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -29,13 +30,13 @@
 
 @media (min-width: 768px) {
   .auth__container {
-    max-height: 560px;
+    flex-grow: 0;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1280px) {
   .auth__container {
-    max-height: none;
+    flex-grow: 1;
   }
 }
 
