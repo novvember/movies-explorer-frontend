@@ -125,6 +125,10 @@
   border: 1px solid var(--primary);
 }
 
+.auth__input::placeholder {
+  color: var(--on-surface-variant);
+}
+
 .auth__error {
   margin: 0;
   margin-block: 10px;

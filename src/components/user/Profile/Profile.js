@@ -13,7 +13,7 @@ function Profile() {
   return (
     <main className="profile content__stretched-element">
       <div className="profile__container">
-        <h1 className="profile__title">Привет, Виталий!</h1>
+        <h1 className="profile__title">Привет, Джон!</h1>
         <form className="profile__form">
           <label className="profile__input-container">
             <span className="profile__input-label">Имя</span>
@@ -24,6 +24,7 @@ function Profile() {
               minLength="2"
               maxLength="30"
               required={true}
+              placeholder="Джон Макклейн"
               {...(!isInEditMode ? { disabled: true } : {})}
             />
           </label>
@@ -34,6 +35,7 @@ function Profile() {
               className="profile__input"
               name="email"
               required={true}
+              placeholder="mcclane@nakatomi.corp"
               {...(!isInEditMode ? { disabled: true } : {})}
             />
           </label>

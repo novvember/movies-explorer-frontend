@@ -10,6 +10,7 @@ function AuthInputForName() {
         required: true,
         minLength: 2,
         maxLength: 30,
+        placeholder: 'Джон Макклейн',
       }}
     />
   );
