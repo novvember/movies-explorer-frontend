@@ -21,15 +21,19 @@ function Profile() {
               type="text"
               className="profile__input"
               name="name"
+              minLength="2"
+              maxLength="30"
+              required={true}
               {...(!isInEditMode ? { disabled: true } : {})}
             />
           </label>
           <label className="profile__input-container">
             <span className="profile__input-label">E-mail</span>
             <input
-              type="text"
+              type="email"
               className="profile__input"
               name="email"
+              required={true}
               {...(!isInEditMode ? { disabled: true } : {})}
             />
           </label>
