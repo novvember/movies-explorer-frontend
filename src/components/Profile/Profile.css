@@ -1,37 +1,50 @@
 .profile {
   color: var(--on-surface);
   /* Отступы */
-  padding-top: 70px;
-  padding-inline: 30px;
-  padding-bottom: 40px;
+  padding: 70px 30px 40px;
   /* Расположение элементов */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 63px;
 }
 
 @media (min-width: 768px) {
   .profile {
-    padding-top: 236px;
-    /* padding-inline: 180px; */
-    padding-bottom: 269px;
-    gap: 80px;
+    padding-block: 70px;
+    justify-content: center;
   }
 }
 
 @media (min-width: 1280px) {
   .profile {
-    padding-top: 74px;
-    /* padding-inline: 435px; */
-    padding-bottom: 70px;
-    gap: 107px;
+    justify-content: start;
+  }
+}
+
+.profile__container {
+  width: 100%;
+  max-width: 410px;
+  height: 445px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .profile__container {
+    flex-grow: 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .profile__container {
+    flex-grow: 1;
   }
 }
 
 .profile__title {
-  max-width: 410px;
   margin: 0;
+  margin-bottom: 63px;
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
@@ -39,30 +52,20 @@
   text-align: center;
 }
 
-.profile__form {
-  max-width: 410px;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 63px;
-  width: 100%;
-}
-
 @media (min-width: 768px) {
-  .profile__form {
-    gap: 107px;
+  .profile__title {
+    margin-bottom: 80px;
   }
 }
 
 @media (min-width: 1280px) {
-  .profile__form {
-    gap: 80px;
+  .profile__title {
+    margin-bottom: 107px;
   }
 }
 
-.profile__inputs {
+.profile__form {
   flex-grow: 1;
-  /* Расположение элементов */
   display: flex;
   flex-direction: column;
 }
@@ -72,7 +75,6 @@
   justify-content: space-between;
   align-items: center;
   gap: 20px;
-
   padding-block: 10px;
   border-bottom: 1px solid var(--background-variant-secondary);
 }
@@ -109,23 +111,18 @@
 }
 
 .profile__input:disabled {
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 .profile__input:focus {
   outline: none;
-  border-bottom: 1px solid var(--primary);
-}
-
-.profile__buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
+  border-bottom: 1px dotted var(--primary);
 }
 
 .profile__error-message {
   margin: 0;
+  margin-top: auto;
+  margin-bottom: 20px;
   font-style: normal;
   font-weight: 400;
   font-size: 11px;

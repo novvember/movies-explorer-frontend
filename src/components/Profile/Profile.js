@@ -11,9 +11,9 @@ function Profile() {
 
   return (
     <main className="profile content__stretched-element">
-      <h1 className="profile__title">Привет, Виталий!</h1>
-      <form className="profile__form">
-        <div className="profile__inputs">
+      <div className="profile__container">
+        <h1 className="profile__title">Привет, Виталий!</h1>
+        <form className="profile__form">
           <label className="profile__input-container">
             <span className="profile__input-label">Имя</span>
             <input
@@ -32,38 +32,38 @@ function Profile() {
               {...(!isInEditMode ? { disabled: true } : {})}
             />
           </label>
-        </div>
 
-        {isInEditMode && (
-          <div className="profile__buttons">
-            <p className="profile__error-message">
-              При обновлении профиля произошла ошибка.
-            </p>
-            <button
-              className="input__submit-button"
-              onClick={switchEditMode}
-              type="submit"
-            >
-              Сохранить
-            </button>
-          </div>
+          {isInEditMode && (
+            <>
+              <p className="profile__error-message">
+                При обновлении профиля произошла ошибка.
+              </p>
+              <button
+                className="input__submit-button"
+                onClick={switchEditMode}
+                type="submit"
+              >
+                Сохранить
+              </button>
+            </>
+          )}
+        </form>
+
+        {!isInEditMode && (
+          <ul className="profile__links">
+            <li className="profile__links-item">
+              <button className="profile__link" onClick={switchEditMode}>
+                Редактировать
+              </button>
+            </li>
+            <li className="profile__links-item">
+              <button className="profile__link profile__link_type_logout">
+                Выйти из аккаунта
+              </button>
+            </li>
+          </ul>
         )}
-      </form>
-
-      {!isInEditMode && (
-        <ul className="profile__links">
-          <li className="profile__links-item">
-            <button className="profile__link" onClick={switchEditMode}>
-              Редактировать
-            </button>
-          </li>
-          <li className="profile__links-item">
-            <button className="profile__link profile__link_type_logout">
-              Выйти из аккаунта
-            </button>
-          </li>
-        </ul>
-      )}
+      </div>
     </main>
   );
 }
