@@ -3,6 +3,8 @@ import logo from '../../../images/logo.svg';
 import { Link } from 'react-router-dom';
 import SubmitButton from '../SubmitButton/SubmitButton';
 import AuthInputForName from '../AuthInputForName/AuthInputForName';
+import AuthInputForEmail from '../AuthInputForEmail/AuthInputForEmail';
+import AuthInputForPassword from '../AuthInputForPassword/AuthInputForPassword';
 
 function Auth({ mode = 'register' }) {
   const MODES = {
@@ -43,19 +45,9 @@ function Auth({ mode = 'register' }) {
         <h1 className="auth__title">{MODES[mode].title}</h1>
         <form className="auth__form">
           <AuthInputForName />
-          <label className="auth__input-container">
-            <span className="auth__label">E-mail</span>
-            <input type="email" className="auth__input" name="email" required />
-          </label>
-          <label className="auth__input-container">
-            <span className="auth__label">Пароль</span>
-            <input
-              type="password"
-              className="auth__input"
-              name="password"
-              required
-            />
-          </label>
+          <AuthInputForEmail />
+          <AuthInputForPassword />
+
           <p className="auth__error">Что-то пошло не так...</p>
           <SubmitButton
             title="Зарегистрироваться"
