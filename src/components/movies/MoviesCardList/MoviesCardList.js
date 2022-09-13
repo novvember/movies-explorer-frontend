@@ -25,7 +25,7 @@ function MoviesCardList({ type }) {
             duration={movie.duration}
             thumbnail={
               'https://api.nomoreparties.co/' +
-              movie.image.formats.thumbnail.url
+              movie.image.url
             }
             type={type}
           />
