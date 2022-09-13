@@ -14,7 +14,6 @@ function SearchForm({
     searchText: defaultSearchText,
     areShortiesSeleted: defaultAreShortiesSeleted,
   };
-
   const form = React.useRef();
 
   const [inputValues, setInputValues] = React.useState(defaultValues);
@@ -25,6 +24,7 @@ function SearchForm({
   function handleChange(event) {
     const input = event.target;
     const name = input.name;
+
     let value;
     if (input.type === 'checkbox') {
       value = input.checked;

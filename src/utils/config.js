@@ -1,0 +1,3 @@
+export const SEARCH_PARAMS = {
+  SHORTIES_MAX_DURATION: 40,
+}

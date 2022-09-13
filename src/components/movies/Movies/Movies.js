@@ -7,20 +7,19 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
 import './Movies.css';
 import moviesApi from '../../../utils/MoviesApi';
+import searchMovies from '../../../utils/searchMovies';
 
 function Movies() {
-  const SHORTIES_MAX_DURATION = 40;
-
-  const [movies, setMovies] = React.useState([]);
+  const [allMovies, setAllMovies] = React.useState(null);
 
   const [searchText, setSearchText] = React.useState('');
   const [areShortiesSeleted, setAreShortiesSeleted] = React.useState(true);
-  const [filteredMovies, setFilteredMovies] = React.useState([]);
+  const [foundMovies, setFoundMovies] = React.useState([]);
 
   const [isLoading, setIsLoading] = React.useState(false);
 
   async function handleSearchFormSubmit({ searchText, areShortiesSeleted }) {
-    if (!movies.length) {
+    if (!allMovies) {
       setIsLoading(true);
       await getMovies();
       setIsLoading(false);
@@ -35,25 +34,19 @@ function Movies() {
 
   async function getMovies() {
     const movies = await moviesApi.getMovies();
-    setMovies(movies);
+    setAllMovies(movies);
   }
 
   React.useEffect(() => {
-    if (movies.length) {
-      let filtered = movies;
-
-      if (!areShortiesSeleted) {
-        filtered = movies.filter(
-          (movie) => movie.duration > SHORTIES_MAX_DURATION,
-        );
-      }
-
-      const regexp = new RegExp(searchText, 'i');
-      filtered = filtered.filter((movie) => regexp.test(movie.nameRU));
-
-      setFilteredMovies(filtered);
+    if (allMovies) {
+      const foundMovies = searchMovies(
+        allMovies,
+        searchText,
+        areShortiesSeleted,
+      );
+      setFoundMovies(foundMovies);
     }
-  }, [searchText, areShortiesSeleted, movies]);
+  }, [searchText, areShortiesSeleted, allMovies]);
 
   return (
     <>
@@ -68,7 +61,7 @@ function Movies() {
           defaultSearchText={searchText}
           defaultAreShortiesSeleted={areShortiesSeleted}
         />
-        <MoviesCardList type="all" movies={filteredMovies} />
+        <MoviesCardList type="all" movies={foundMovies} />
         <More />
         {/* <Preloader /> will ve set later */}
       </main>
