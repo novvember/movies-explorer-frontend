@@ -58,6 +58,7 @@ function SearchForm({ onSubmit, isBlocked }) {
         required
         value={inputValues.search}
         onChange={handleChange}
+        disabled={isBlocked}
       />
       <Checkbox
         title="Короткометражки"
@@ -65,12 +66,13 @@ function SearchForm({ onSubmit, isBlocked }) {
         name="areShortiesSeleted"
         checked={inputValues.areShortiesSeleted}
         onChange={handleChange}
+        disabled={isBlocked}
       />
       <span className="search-form__error">{isErrorShown && errorText}</span>
       <button
         type="submit"
         className="search-form__button"
-        {...{ disabled: isBlocked }}
+        disabled={isBlocked}
       >
         Найти
       </button>
