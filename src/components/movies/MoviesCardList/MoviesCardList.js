@@ -1,19 +1,18 @@
 import React from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css';
-
-import testData from '../../../utils/testData';
+import moviesApi from '../../../utils/MoviesApi';
 
 function MoviesCardList({ type }) {
-  // DEMO FOR GETTING AND SETTING MOVIE CARDS
   const [movies, setMovies] = React.useState([]);
 
-  function testGetMovies() {
-    setMovies(testData);
+  async function getMovies() {
+    const movies = await moviesApi.getMovies();
+    setMovies(movies);
   }
 
   React.useEffect(() => {
-    testGetMovies();
+    getMovies();
   }, []);
 
   return (
