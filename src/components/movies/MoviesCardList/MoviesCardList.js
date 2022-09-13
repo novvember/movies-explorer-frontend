@@ -1,20 +1,8 @@
 import React from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css';
-import moviesApi from '../../../utils/MoviesApi';
 
-function MoviesCardList({ type }) {
-  const [movies, setMovies] = React.useState([]);
-
-  async function getMovies() {
-    const movies = await moviesApi.getMovies();
-    setMovies(movies);
-  }
-
-  React.useEffect(() => {
-    getMovies();
-  }, []);
-
+function MoviesCardList({ type, movies }) {
   return (
     <ul className="movie-card-list section" aria-label="Список фильмов">
       {movies.map((movie) => {
@@ -23,10 +11,7 @@ function MoviesCardList({ type }) {
             key={movie.id}
             name={movie.nameRU}
             duration={movie.duration}
-            thumbnail={
-              'https://api.nomoreparties.co/' +
-              movie.image.url
-            }
+            thumbnail={'https://api.nomoreparties.co/' + movie.image.url}
             type={type}
           />
         );

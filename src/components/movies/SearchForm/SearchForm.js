@@ -3,20 +3,36 @@ import React from 'react';
 import Checkbox from '../Checkbox/Checkbox';
 import './SearchForm.css';
 
-function SearchForm({ onSubmit, isBlocked }) {
-  const DEFAULT_VALUES = { searchText: '', areShortiesSeleted: true };
+function SearchForm({
+  onSubmit,
+  onCheckboxChange,
+  isBlocked,
+  defaultSearchText,
+  defaultAreShortiesSeleted,
+}) {
+  const defaultValues = {
+    searchText: defaultSearchText,
+    areShortiesSeleted: defaultAreShortiesSeleted,
+  };
+
   const form = React.useRef();
-  const [inputValues, setInputValues] = React.useState(DEFAULT_VALUES);
+
+  const [inputValues, setInputValues] = React.useState(defaultValues);
   const [isValid, setIsValid] = React.useState(false);
   const [isErrorShown, setIsErrorShown] = React.useState(false);
   const [errorText, setErrorText] = React.useState('');
 
   function handleChange(event) {
-    const name = event.target.name;
-    const value =
-      event.target.type === 'checkbox'
-        ? event.target.checked
-        : event.target.value;
+    const input = event.target;
+    const name = input.name;
+    let value;
+    if (input.type === 'checkbox') {
+      value = input.checked;
+      onCheckboxChange(value);
+    } else {
+      value = input.value;
+    }
+
     setInputValues((state) => ({ ...state, [name]: value }));
     validateForm();
   }
@@ -56,7 +72,7 @@ function SearchForm({ onSubmit, isBlocked }) {
         placeholder="Фильм"
         name="searchText"
         required
-        value={inputValues.search}
+        value={inputValues.searchText}
         onChange={handleChange}
         disabled={isBlocked}
       />
