@@ -2,19 +2,19 @@
   padding-top: 75px;
   padding-bottom: 50px;
   display: grid;
-  row-gap: 40px;
+  row-gap: 10px;
   grid-template-columns: 1fr min-content;
   grid-template-areas:
     'input button'
-    'checkbox checkbox'
-    'error error';
+    'error error'
+    'checkbox checkbox';
 }
 
 @media (min-width: 768px) {
   .search-form {
     padding-top: 67px;
     padding-bottom: 60px;
-    row-gap: 30px;
+    row-gap: 5px;
   }
 }
 
@@ -22,7 +22,7 @@
   .search-form {
     padding-top: 57px;
     padding-bottom: 47px;
-    row-gap: 32px;
+    row-gap: 6px;
   }
 }
 
