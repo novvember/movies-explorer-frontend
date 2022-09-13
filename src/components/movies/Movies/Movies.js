@@ -7,13 +7,18 @@ import SearchForm from '../SearchForm/SearchForm';
 import './Movies.css';
 
 function Movies() {
+  function handleSearchFormSubmit({ searchText, areShortiesSeleted }) {
+    console.log(searchText);
+    console.log(areShortiesSeleted);
+  }
+
   return (
     <>
       <Header>
         <Navigation />
       </Header>
       <main>
-        <SearchForm />
+        <SearchForm onSubmit={handleSearchFormSubmit} />
         <MoviesCardList type="all" />
         <More />
         {/* <Preloader /> will ve set later */}

@@ -1,10 +1,14 @@
+import classNames from 'classnames';
 import React from 'react';
 import Checkbox from '../Checkbox/Checkbox';
 import './SearchForm.css';
 
 function SearchForm({ onSubmit }) {
-  const DEFAULT_VALUES = { searchText: '', showShorties: true };
+  const DEFAULT_VALUES = { searchText: '', areShortiesSeleted: true };
+  const form = React.useRef();
   const [inputValues, setInputValues] = React.useState(DEFAULT_VALUES);
+  const [isValid, setIsValid] = React.useState(false);
+  const [isErrorShown, setIsErrorShown] = React.useState(false);
   const [errorText, setErrorText] = React.useState('');
 
   function handleChange(event) {
@@ -14,35 +18,41 @@ function SearchForm({ onSubmit }) {
         ? event.target.checked
         : event.target.value;
     setInputValues((state) => ({ ...state, [name]: value }));
+    validateForm();
   }
+
+  function validateForm() {
+    setIsValid(form.current.checkValidity());
+  }
+
+  React.useEffect(() => {
+    if (isValid) {
+      setIsErrorShown(false);
+    }
+  }, [isValid]);
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (!validateForm(event.target)) return;
-    onSubmit();
-  }
-
-  function validateForm(form) {
-    const isValid = form.checkValidity();
-
     if (!isValid) {
-      setError('Нужно ввести ключевое слово');
-      return false;
+      setErrorText('Нужно ввести ключевое слово');
+      setIsErrorShown(true);
+      return;
     }
-
-    setError('');
-    return true;
-  }
-
-  function setError(text) {
-    setErrorText(text);
+    onSubmit(inputValues);
   }
 
   return (
-    <form className="search-form section" onSubmit={handleSubmit} noValidate>
+    <form
+      className="search-form section"
+      onSubmit={handleSubmit}
+      noValidate
+      ref={form}
+    >
       <input
         type="text"
-        className="search-form__input"
+        className={classNames('search-form__input', {
+          'search-form__input_invalid': isErrorShown,
+        })}
         placeholder="Фильм"
         name="searchText"
         required
@@ -52,11 +62,11 @@ function SearchForm({ onSubmit }) {
       <Checkbox
         title="Короткометражки"
         className="search-form__checkbox"
-        name="showShorties"
-        value={inputValues.shorties}
+        name="areShortiesSeleted"
+        checked={inputValues.areShortiesSeleted}
         onChange={handleChange}
       />
-      <span className="search__error">{errorText}</span>
+      <span className="search-form__error">{isErrorShown && errorText}</span>
       <button type="submit" className="search-form__button">
         Найти
       </button>

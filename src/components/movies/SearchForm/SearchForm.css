@@ -6,7 +6,8 @@
   grid-template-columns: 1fr min-content;
   grid-template-areas:
     'input button'
-    'checkbox checkbox';
+    'checkbox checkbox'
+    'error error';
 }
 
 @media (min-width: 768px) {
@@ -58,6 +59,11 @@
   color: var(--on-surface-variant);
 }
 
+.search-form__input_invalid,
+.search-form__input_invalid:focus {
+  border-bottom-color: var(--error);
+}
+
 .search-form__checkbox {
   grid-area: checkbox;
   justify-self: center;
@@ -71,6 +77,31 @@
 
 @media (min-width: 1280px) {
   .search-form__checkbox {
+    justify-self: start;
+  }
+}
+
+.search-form__error {
+  grid-area: error;
+  justify-self: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.64;
+  color: var(--error);
+  min-height: 1.64em;
+}
+
+@media (min-width: 768px) {
+  .search-form__error {
+    justify-self: end;
+    font-size: 13px;
+    line-height: 1.38;
+  }
+}
+
+@media (min-width: 1280px) {
+  .search-form__error {
     justify-self: start;
   }
 }
