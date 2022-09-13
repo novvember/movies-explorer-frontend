@@ -3,7 +3,7 @@ import React from 'react';
 import Checkbox from '../Checkbox/Checkbox';
 import './SearchForm.css';
 
-function SearchForm({ onSubmit }) {
+function SearchForm({ onSubmit, isBlocked }) {
   const DEFAULT_VALUES = { searchText: '', areShortiesSeleted: true };
   const form = React.useRef();
   const [inputValues, setInputValues] = React.useState(DEFAULT_VALUES);
@@ -67,7 +67,11 @@ function SearchForm({ onSubmit }) {
         onChange={handleChange}
       />
       <span className="search-form__error">{isErrorShown && errorText}</span>
-      <button type="submit" className="search-form__button">
+      <button
+        type="submit"
+        className="search-form__button"
+        {...{ disabled: isBlocked }}
+      >
         Найти
       </button>
     </form>
