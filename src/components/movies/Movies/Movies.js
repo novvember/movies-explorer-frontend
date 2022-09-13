@@ -2,12 +2,13 @@ import React from 'react';
 import Footer from '../../common/Footer/Footer';
 import Header from '../../common/Header/Header';
 import Navigation from '../../common/Navigation/Navigation';
-import More from '../More/More';
+// import More from '../More/More';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
 import './Movies.css';
 import moviesApi from '../../../utils/MoviesApi';
 import searchMovies from '../../../utils/searchMovies';
+import Preloader from '../Preloader/Preloader';
 
 function Movies() {
   const [allMovies, setAllMovies] = React.useState(null);
@@ -53,7 +54,7 @@ function Movies() {
       <Header>
         <Navigation />
       </Header>
-      <main>
+      <main aria-label="Поиск фильмов">
         <SearchForm
           onSubmit={handleSearchFormSubmit}
           onCheckboxChange={handleCheckboxChange}
@@ -61,9 +62,18 @@ function Movies() {
           defaultSearchText={searchText}
           defaultAreShortiesSeleted={areShortiesSeleted}
         />
-        <MoviesCardList type="all" movies={foundMovies} />
-        <More />
-        {/* <Preloader /> will ve set later */}
+
+        {isLoading ? (
+          <Preloader />
+        ) : foundMovies.length ? (
+          <MoviesCardList type="all" movies={foundMovies} />
+        ) : allMovies ? (
+          'Ничего не найдено'
+        ) : (
+          false
+        )}
+
+        {/* <More /> */}
       </main>
       <Footer />
     </>
