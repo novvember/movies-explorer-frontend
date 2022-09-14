@@ -11,8 +11,9 @@ function searchMovies(movies, searchText, areShortiesSeleted) {
     );
   }
 
-  const regexp = new RegExp(searchText, 'i');
-  foundMovies = foundMovies.filter((movie) => regexp.test(movie.nameRU));
+  foundMovies = foundMovies.filter((movie) =>
+    movie.nameRU.toLowerCase().includes(searchText.toLowerCase()),
+  );
 
   return foundMovies;
 }
