@@ -9,6 +9,7 @@ import './Movies.css';
 import moviesApi from '../../../utils/MoviesApi';
 import searchMovies from '../../../utils/searchMovies';
 import Preloader from '../Preloader/Preloader';
+import Message from '../Message/Message';
 
 function Movies() {
   const [allMovies, setAllMovies] = React.useState(null);
@@ -63,7 +64,8 @@ function Movies() {
           defaultAreShortiesSeleted={areShortiesSeleted}
         />
 
-        <Preloader />
+        <Message text="Ничего не найдено" isError />
+
         {isLoading ? (
           <Preloader />
         ) : foundMovies.length ? (

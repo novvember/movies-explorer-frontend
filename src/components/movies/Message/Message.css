@@ -1,0 +1,24 @@
+.message {
+  padding-block: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.message__text {
+  text-align: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.64;
+}
+
+@media (min-width: 768px) {
+  .message__text {
+    font-size: 13px;
+    line-height: 1.38;
+  }
+}
+
+.message__text_type_error {
+  color: var(--error);
+}
