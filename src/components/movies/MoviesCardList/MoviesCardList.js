@@ -2,7 +2,7 @@ import React from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css';
 import More from '../More/More';
-import { CARDS_RENDER_COUNT } from '../../../utils/config';
+import { CARDS_RENDER_COUNT, MOVIE_API } from '../../../utils/config';
 import countGridColumns from '../../../utils/countGridColumns';
 import Message from '../Message/Message';
 
@@ -14,8 +14,8 @@ function MoviesCardList({ type, movies }) {
     if (movies.length) {
       const columnsCount = countGridColumns(grid.current);
       const initialCardsCount =
-        CARDS_RENDER_COUNT[columnsCount]?.initial ??
-        CARDS_RENDER_COUNT['default'].initial;
+        CARDS_RENDER_COUNT[columnsCount]?.INITIAL ??
+        CARDS_RENDER_COUNT['default'].INITIAL;
       const array = movies.slice(0, initialCardsCount);
       setRenderedMovies(array);
     }
@@ -26,8 +26,8 @@ function MoviesCardList({ type, movies }) {
     const renderedCountFixed =
       Math.ceil(renderedMovies.length / columnsCount) * columnsCount;
     const moreCardsCount =
-      CARDS_RENDER_COUNT[columnsCount]?.add ??
-      CARDS_RENDER_COUNT['default'].add;
+      CARDS_RENDER_COUNT[columnsCount]?.ADD ??
+      CARDS_RENDER_COUNT['default'].ADD;
     const array = movies.slice(0, renderedCountFixed + moreCardsCount);
     setRenderedMovies(array);
   }
@@ -48,7 +48,8 @@ function MoviesCardList({ type, movies }) {
                 key={movie.id}
                 name={movie.nameRU}
                 duration={movie.duration}
-                thumbnail={'https://api.nomoreparties.co/' + movie.image.url}
+                thumbnail={MOVIE_API.MEDIA_BASE_URL + movie.image.url}
+                trailerLink={movie.trailerLink}
                 type={type}
               />
             );

@@ -4,7 +4,7 @@ import CardButton from '../CardButton/CardButton';
 import React from 'react';
 import getNumDeclination from '../../../utils/getNumDeclination';
 
-function MoviesCard({ name, duration, thumbnail, type }) {
+function MoviesCard({ name, duration, thumbnail, trailerLink, type }) {
   // DEMO FOR BUTTON CLICK
   const [isSaved, setIsSaved] = React.useState(false);
 
