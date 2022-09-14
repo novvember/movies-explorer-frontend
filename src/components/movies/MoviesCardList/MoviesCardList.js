@@ -1,10 +1,10 @@
 import React from 'react';
-import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css';
 import More from '../More/More';
-import { CARDS_RENDER_COUNT, MOVIE_API } from '../../../utils/config';
+import { CARDS_RENDER_COUNT } from '../../../utils/config';
 import countGridColumns from '../../../utils/countGridColumns';
 import Message from '../Message/Message';
+import MoviesCard from '../MoviesCard/MoviesCard';
 
 function MoviesCardList({ type, movies }) {
   const [renderedMovies, setRenderedMovies] = React.useState([]);
@@ -43,16 +43,7 @@ function MoviesCardList({ type, movies }) {
           ref={grid}
         >
           {renderedMovies.map((movie) => {
-            return (
-              <MoviesCard
-                key={movie.id}
-                name={movie.nameRU}
-                duration={movie.duration}
-                thumbnail={MOVIE_API.MEDIA_BASE_URL + movie.image.url}
-                trailerLink={movie.trailerLink}
-                type={type}
-              />
-            );
+            return <MoviesCard movieData={movie} type={type} key={movie.id} />;
           })}
         </ul>
       )}
