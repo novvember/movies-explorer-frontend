@@ -2,7 +2,6 @@ import React from 'react';
 import Footer from '../../common/Footer/Footer';
 import Header from '../../common/Header/Header';
 import Navigation from '../../common/Navigation/Navigation';
-// import More from '../More/More';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
 import './Movies.css';
@@ -12,15 +11,58 @@ import Preloader from '../Preloader/Preloader';
 import Message from '../Message/Message';
 
 function Movies() {
+  // Значения параметров поиска при загрузке
+  const defaultSearchText = localStorage.getItem('searchText') ?? '';
+  const defaultAreShortiesSeleted =
+    JSON.parse(localStorage.getItem('areShortiesSeleted')) ?? true;
+  const defaultFoundMovies =
+    JSON.parse(localStorage.getItem('foundMovies')) ?? [];
+
+  // Параметры поиска
+  const [searchText, setSearchText] = React.useState(defaultSearchText);
+  const [areShortiesSeleted, setAreShortiesSeleted] = React.useState(
+    defaultAreShortiesSeleted,
+  );
+  const [foundMovies, setFoundMovies] = React.useState(defaultFoundMovies);
+
+  // Данные обо всех фильмах из API
   const [allMovies, setAllMovies] = React.useState(null);
 
-  const [searchText, setSearchText] = React.useState('');
-  const [areShortiesSeleted, setAreShortiesSeleted] = React.useState(true);
-  const [foundMovies, setFoundMovies] = React.useState([]);
-
+  // Служебные сообщения
   const [isLoading, setIsLoading] = React.useState(false);
   const [isErrorOnLoading, setIsErrorOnLoading] = React.useState(false);
 
+  // Поиск фильмов
+  React.useEffect(() => {
+    if (allMovies) {
+      const foundMovies = searchMovies(
+        allMovies,
+        searchText,
+        areShortiesSeleted,
+      );
+      setFoundMovies(foundMovies);
+    }
+  }, [searchText, areShortiesSeleted, allMovies]);
+
+  // Сохранение параметров поиска в localStorage
+  React.useEffect(() => {
+    localStorage.setItem('searchText', searchText);
+    localStorage.setItem('areShortiesSeleted', areShortiesSeleted);
+    localStorage.setItem('foundMovies', JSON.stringify(foundMovies));
+  }, [searchText, areShortiesSeleted, foundMovies]);
+
+  // Запрос к API
+  async function getMovies() {
+    setIsErrorOnLoading(false);
+    try {
+      const movies = await moviesApi.getMovies();
+      setAllMovies(movies);
+    } catch {
+      setIsErrorOnLoading(true);
+    }
+  }
+
+  // Действия формы
   async function handleSearchFormSubmit({ searchText, areShortiesSeleted }) {
     if (!allMovies) {
       setIsLoading(true);
@@ -34,27 +76,6 @@ function Movies() {
   function handleCheckboxChange(value) {
     setAreShortiesSeleted(value);
   }
-
-  async function getMovies() {
-    setIsErrorOnLoading(false);
-    try {
-      const movies = await moviesApi.getMovies();
-      setAllMovies(movies);
-    } catch {
-      setIsErrorOnLoading(true);
-    }
-  }
-
-  React.useEffect(() => {
-    if (allMovies) {
-      const foundMovies = searchMovies(
-        allMovies,
-        searchText,
-        areShortiesSeleted,
-      );
-      setFoundMovies(foundMovies);
-    }
-  }, [searchText, areShortiesSeleted, allMovies]);
 
   return (
     <>
@@ -84,8 +105,6 @@ function Movies() {
         ) : (
           false
         )}
-
-        {/* <More /> */}
       </main>
       <Footer />
     </>
