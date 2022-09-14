@@ -1,29 +1,17 @@
 import './MoviesCard.css';
 
-import CardButton from '../CardButton/CardButton';
 import React from 'react';
 import getNumDeclination from '../../../utils/getNumDeclination';
 import { MOVIE_API } from '../../../utils/config';
+import GeneralCardButton from '../GeneralCardButton/GeneralCardButton';
 
-function MoviesCard({ movieData, children }) {
-  // DEMO FOR BUTTON CLICK
-  const [isSaved, setIsSaved] = React.useState(false);
-
-  const type = 'all';
-
-  function handleClickSave() {
-    setIsSaved((state) => !state);
-  }
-
-  const ref = React.useRef();
-
-  function handleClickDelete() {
-    setIsSaved(false);
-    ref.current.remove();
+function MoviesCard({ movieData, isSaved, onClick }) {
+  function handleClick() {
+    onClick(movieData.id);
   }
 
   return (
-    <li className="movie-card" ref={ref}>
+    <li className="movie-card">
       <h3 className="movie-card__name">{movieData.nameRU}</h3>
       <p className="movie-card__duration">{`${
         movieData.duration
@@ -37,28 +25,7 @@ function MoviesCard({ movieData, children }) {
         alt={`Кадр из фильма ${movieData.name}`}
         className="movie-card__thumbnail"
       />
-
-      {type === 'all' ? (
-        isSaved ? (
-          <CardButton
-            className="movie-card__button"
-            type="done"
-            onClick={handleClickSave}
-          />
-        ) : (
-          <CardButton
-            className="movie-card__button"
-            type="save"
-            onClick={handleClickSave}
-          />
-        )
-      ) : (
-        <CardButton
-          className="movie-card__button"
-          type="delete"
-          onClick={handleClickDelete}
-        />
-      )}
+      <GeneralCardButton isSaved={isSaved} onClick={handleClick} />
     </li>
   );
 }

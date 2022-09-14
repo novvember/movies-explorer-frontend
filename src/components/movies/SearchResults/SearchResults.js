@@ -3,7 +3,13 @@ import Message from '../Message/Message';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 
-function SearchResults({ isErrorOnLoading, isLoading, movies }) {
+function SearchResults({
+  isErrorOnLoading,
+  isLoading,
+  movies,
+  savedMovies,
+  onCardClick,
+}) {
   return isErrorOnLoading ? (
     <Message text={ERROR_MSGS.CANT_GET_MOVIES} isError />
   ) : isLoading ? (
@@ -11,7 +17,11 @@ function SearchResults({ isErrorOnLoading, isLoading, movies }) {
   ) : movies.length === 0 ? (
     <Message text={ERROR_MSGS.NOT_FOUND} />
   ) : (
-    <MoviesCardList type="all" movies={movies} />
+    <MoviesCardList
+      movies={movies}
+      savedMovies={savedMovies}
+      onCardClick={onCardClick}
+    />
   );
 }
 

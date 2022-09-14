@@ -5,7 +5,7 @@ import { CARDS_RENDER_COUNT } from '../../../utils/config';
 import countGridColumns from '../../../utils/countGridColumns';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
-function MoviesCardList({ type, movies }) {
+function MoviesCardList({ movies, savedMovies, onCardClick }) {
   const [renderedMovies, setRenderedMovies] = React.useState([]);
   const grid = React.useRef();
 
@@ -31,6 +31,10 @@ function MoviesCardList({ type, movies }) {
     setRenderedMovies(array);
   }
 
+  function checkIsMovieSaved(movieId) {
+    return savedMovies.some((savedMovie) => savedMovie.id === movieId);
+  }
+
   return (
     <>
       <ul
@@ -39,7 +43,14 @@ function MoviesCardList({ type, movies }) {
         ref={grid}
       >
         {renderedMovies.map((movie) => {
-          return <MoviesCard movieData={movie} type={type} key={movie.id} />;
+          return (
+            <MoviesCard
+              movieData={movie}
+              key={movie.id}
+              isSaved={checkIsMovieSaved(movie.id)}
+              onClick={onCardClick}
+            />
+          );
         })}
       </ul>
       {renderedMovies.length < movies.length && (

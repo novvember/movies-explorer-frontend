@@ -26,6 +26,9 @@ function Movies() {
   // Данные обо всех фильмах из API
   const [allMovies, setAllMovies] = React.useState(null);
 
+  // Сохраненные фильмы
+  const [savedMovies, setSavedMovies] = React.useState([]);
+
   // Служебные сообщения
   const [isLoading, setIsLoading] = React.useState(false);
   const [isErrorOnLoading, setIsErrorOnLoading] = React.useState(false);
@@ -74,6 +77,28 @@ function Movies() {
     if (!allMovies) getMovies();
   }
 
+  // Сохранение фильмов
+  function handleCardClick(movieId) {
+    const isSaved = savedMovies.some((savedMovie) => savedMovie.id === movieId);
+    if (isSaved) {
+      deleteSavedMovie(movieId);
+    } else {
+      addSavedMovie(movieId);
+    }
+    console.log(savedMovies);
+  }
+
+  function deleteSavedMovie(movieId) {
+    setSavedMovies((movies) => movies.filter((movie) => movie.id !== movieId));
+  }
+
+  function addSavedMovie(movieId) {
+    setSavedMovies((movies) => [
+      ...movies,
+      allMovies.find((movie) => movie.id === movieId),
+    ]);
+  }
+
   return (
     <>
       <Header>
@@ -93,6 +118,8 @@ function Movies() {
             isErrorOnLoading={isErrorOnLoading}
             isLoading={isLoading}
             movies={foundMovies}
+            savedMovies={savedMovies}
+            onCardClick={handleCardClick}
           />
         )}
       </main>
