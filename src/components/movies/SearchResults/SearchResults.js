@@ -9,6 +9,7 @@ function SearchResults({
   movies,
   savedMovies,
   onCardClick,
+  isSavedMoviesSearchResult = false,
 }) {
   return isErrorOnLoading ? (
     <Message text={ERROR_MSGS.CANT_GET_MOVIES} isError />
@@ -21,6 +22,7 @@ function SearchResults({
       movies={movies}
       savedMovies={savedMovies}
       onCardClick={onCardClick}
+      isSavedMoviesCardList={isSavedMoviesSearchResult}
     />
   );
 }

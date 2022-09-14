@@ -4,8 +4,9 @@ import React from 'react';
 import getNumDeclination from '../../../utils/getNumDeclination';
 import { MOVIE_API } from '../../../utils/config';
 import GeneralCardButton from '../GeneralCardButton/GeneralCardButton';
+import SavedCardButton from '../SavedCardButton/SavedCardButton';
 
-function MoviesCard({ movieData, isSaved, onClick }) {
+function MoviesCard({ movieData, isSaved, onClick, isSavedMovieCard = false }) {
   function handleClick() {
     onClick(movieData.id);
   }
@@ -25,7 +26,12 @@ function MoviesCard({ movieData, isSaved, onClick }) {
         alt={`Кадр из фильма ${movieData.name}`}
         className="movie-card__thumbnail"
       />
-      <GeneralCardButton isSaved={isSaved} onClick={handleClick} />
+
+      {isSavedMovieCard ? (
+        <SavedCardButton onClick={handleClick} />
+      ) : (
+        <GeneralCardButton isSaved={isSaved} onClick={handleClick} />
+      )}
     </li>
   );
 }
