@@ -14,17 +14,17 @@ function SearchForm({
     searchText: defaultSearchText,
     areShortiesSeleted: defaultAreShortiesSeleted,
   };
+
   const form = React.useRef();
 
   const [inputValues, setInputValues] = React.useState(defaultValues);
-  const [isValid, setIsValid] = React.useState(false);
+  const [isValid, setIsValid] = React.useState(true);
   const [isErrorShown, setIsErrorShown] = React.useState(false);
   const [errorText, setErrorText] = React.useState('');
 
   function handleChange(event) {
     const input = event.target;
     const name = input.name;
-
     let value;
     if (input.type === 'checkbox') {
       value = input.checked;
@@ -32,7 +32,6 @@ function SearchForm({
     } else {
       value = input.value;
     }
-
     setInputValues((state) => ({ ...state, [name]: value }));
     validateForm();
   }
@@ -40,6 +39,10 @@ function SearchForm({
   function validateForm() {
     setIsValid(form.current.checkValidity());
   }
+
+  React.useEffect(() => {
+    validateForm();
+  }, []);
 
   React.useEffect(() => {
     if (isValid) {
