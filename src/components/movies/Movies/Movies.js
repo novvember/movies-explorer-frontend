@@ -52,27 +52,26 @@ function Movies() {
   // Запрос к API
   async function getMovies() {
     setIsErrorOnLoading(false);
+    setIsLoading(true);
     try {
       const movies = await moviesApi.getMovies();
       setAllMovies(movies);
     } catch {
       setIsErrorOnLoading(true);
     }
+    setIsLoading(false);
   }
 
   // Действия формы
-  async function handleSearchFormSubmit({ searchText, areShortiesSeleted }) {
-    if (!allMovies) {
-      setIsLoading(true);
-      await getMovies();
-      setIsLoading(false);
-    }
+  function handleSearchFormSubmit({ searchText, areShortiesSeleted }) {
     setAreShortiesSeleted(areShortiesSeleted);
     setSearchText(searchText);
+    if (!allMovies) getMovies();
   }
 
   function handleCheckboxChange(value) {
     setAreShortiesSeleted(value);
+    if (!allMovies) getMovies();
   }
 
   return (
