@@ -25,3 +25,9 @@ export const MOVIE_API = {
   BASE_URL: '',
   MEDIA_BASE_URL: 'https://api.nomoreparties.co/',
 };
+
+export const ERROR_MSGS = {
+  NOT_FOUND: 'Ничего не найдено',
+  CANT_GET_MOVIES:
+    'Во&nbsp;время запроса произошла ошибка. Возможно, проблема с&nbsp;соединением или сервер недоступен. Подождите немного и&nbsp;попробуйте ещё раз',
+};

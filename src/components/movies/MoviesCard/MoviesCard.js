@@ -24,7 +24,7 @@ function MoviesCard({ movieData, children }) {
 
   return (
     <li className="movie-card" ref={ref}>
-      <h3 className="movie-card__name">{movieData.name}</h3>
+      <h3 className="movie-card__name">{movieData.nameRU}</h3>
       <p className="movie-card__duration">{`${
         movieData.duration
       } ${getNumDeclination(movieData.duration, [

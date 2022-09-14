@@ -2,13 +2,11 @@ import React from 'react';
 import Footer from '../../common/Footer/Footer';
 import Header from '../../common/Header/Header';
 import Navigation from '../../common/Navigation/Navigation';
-import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
 import './Movies.css';
 import moviesApi from '../../../utils/MoviesApi';
 import searchMovies from '../../../utils/searchMovies';
-import Preloader from '../Preloader/Preloader';
-import Message from '../Message/Message';
+import SearchResults from '../SearchResults/SearchResults';
 
 function Movies() {
   // Значения параметров поиска при загрузке
@@ -91,17 +89,12 @@ function Movies() {
           defaultAreShortiesSeleted={areShortiesSeleted}
         />
 
-        {isErrorOnLoading ? (
-          <Message
-            text="Во&nbsp;время запроса произошла ошибка. Возможно, проблема с&nbsp;соединением или сервер недоступен. Подождите немного и&nbsp;попробуйте ещё раз"
-            isError
+        {searchText && (
+          <SearchResults
+            isErrorOnLoading={isErrorOnLoading}
+            isLoading={isLoading}
+            movies={foundMovies}
           />
-        ) : isLoading ? (
-          <Preloader />
-        ) : searchText ? (
-          <MoviesCardList type="all" movies={foundMovies} />
-        ) : (
-          false
         )}
       </main>
       <Footer />

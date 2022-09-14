@@ -3,7 +3,6 @@ import './MoviesCardList.css';
 import More from '../More/More';
 import { CARDS_RENDER_COUNT } from '../../../utils/config';
 import countGridColumns from '../../../utils/countGridColumns';
-import Message from '../Message/Message';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
 function MoviesCardList({ type, movies }) {
@@ -34,19 +33,15 @@ function MoviesCardList({ type, movies }) {
 
   return (
     <>
-      {movies.length === 0 ? (
-        <Message text="Ничего не найдено" />
-      ) : (
-        <ul
-          className="movie-card-list section"
-          aria-label="Список фильмов"
-          ref={grid}
-        >
-          {renderedMovies.map((movie) => {
-            return <MoviesCard movieData={movie} type={type} key={movie.id} />;
-          })}
-        </ul>
-      )}
+      <ul
+        className="movie-card-list section"
+        aria-label="Список фильмов"
+        ref={grid}
+      >
+        {renderedMovies.map((movie) => {
+          return <MoviesCard movieData={movie} type={type} key={movie.id} />;
+        })}
+      </ul>
       {renderedMovies.length < movies.length && (
         <More onClick={handleMoreClick} />
       )}
