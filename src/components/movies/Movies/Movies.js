@@ -19,6 +19,7 @@ function Movies() {
   const [foundMovies, setFoundMovies] = React.useState([]);
 
   const [isLoading, setIsLoading] = React.useState(false);
+  const [isErrorOnLoading, setIsErrorOnLoading] = React.useState(false);
 
   async function handleSearchFormSubmit({ searchText, areShortiesSeleted }) {
     if (!allMovies) {
@@ -35,8 +36,13 @@ function Movies() {
   }
 
   async function getMovies() {
-    const movies = await moviesApi.getMovies();
-    setAllMovies(movies);
+    setIsErrorOnLoading(false);
+    try {
+      const movies = await moviesApi.getMovies();
+      setAllMovies(movies);
+    } catch {
+      setIsErrorOnLoading(true);
+    }
   }
 
   React.useEffect(() => {
@@ -64,14 +70,17 @@ function Movies() {
           defaultAreShortiesSeleted={areShortiesSeleted}
         />
 
-        <Message text="Ничего не найдено" isError />
-
-        {isLoading ? (
+        {isErrorOnLoading ? (
+          <Message
+            text="Во&nbsp;время запроса произошла ошибка. Возможно, проблема с&nbsp;соединением или сервер недоступен. Подождите немного и&nbsp;попробуйте ещё раз"
+            isError
+          />
+        ) : isLoading ? (
           <Preloader />
         ) : foundMovies.length ? (
           <MoviesCardList type="all" movies={foundMovies} />
         ) : allMovies ? (
-          'Ничего не найдено'
+          <Message text="Ничего не&nbsp;найдено" />
         ) : (
           false
         )}

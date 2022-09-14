@@ -98,15 +98,9 @@
 
 @media (min-width: 768px) {
   .search-form__error {
-    justify-self: end;
+    justify-self: start;
     font-size: 13px;
     line-height: 1.38;
-  }
-}
-
-@media (min-width: 1280px) {
-  .search-form__error {
-    justify-self: start;
   }
 }
 

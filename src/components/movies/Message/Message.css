@@ -5,6 +5,7 @@
 }
 
 .message__text {
+  max-width: 500px;
   text-align: center;
   font-style: normal;
   font-weight: 400;
