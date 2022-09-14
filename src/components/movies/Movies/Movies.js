@@ -63,6 +63,7 @@ function Movies() {
           defaultAreShortiesSeleted={areShortiesSeleted}
         />
 
+        <Preloader />
         {isLoading ? (
           <Preloader />
         ) : foundMovies.length ? (
