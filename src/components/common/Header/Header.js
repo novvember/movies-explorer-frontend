@@ -12,7 +12,7 @@ function Header({ children, isThemed = false }) {
         className="header__main-link"
         to="/"
         style={({ isActive }) => {
-          return isActive ? { 'pointer-events': 'none' } : {};
+          return isActive ? { 'pointerEvents': 'none' } : {};
         }}
       >
         <img
