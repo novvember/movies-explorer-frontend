@@ -11,9 +11,10 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 import mainApi from '../../utils/MainApi';
 import Profile from '../user/Profile/Profile';
 import ProtectedRoute from '../user/ProtectedRoute/ProtectedRoute';
+import AnonymousRoute from '../user/AnonymousRoute/AnonymousRoute';
 
 function App() {
-  const [currentUser, setCurrentUser] = React.useState(null);
+  const [currentUser, setCurrentUser] = React.useState();
   const [isLoading, setIsLoading] = React.useState(true);
 
   const navigate = useNavigate();
@@ -95,8 +96,22 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="/signup" element={<Register onLogin={handleLogin} />} />
-          <Route path="/signin" element={<Login onLogin={handleLogin} />} />
+          <Route
+            path="/signup"
+            element={
+              <AnonymousRoute isLoading={isLoading}>
+                <Register onLogin={handleLogin} />
+              </AnonymousRoute>
+            }
+          />
+          <Route
+            path="/signin"
+            element={
+              <AnonymousRoute isLoading={isLoading}>
+                <Login onLogin={handleLogin} />
+              </AnonymousRoute>
+            }
+          />
           <Route path="*" element={<Page404 />} />
         </Routes>
       </div>
