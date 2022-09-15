@@ -14,29 +14,33 @@ import ProtectedRoute from '../user/ProtectedRoute/ProtectedRoute';
 
 function App() {
   const [currentUser, setCurrentUser] = React.useState(null);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   const navigate = useNavigate();
 
   // Авторизация при открытии страницы по сохраненному логину
   React.useEffect(() => {
+    checkToken();
+  }, []);
+
+  async function checkToken() {
     const token = localStorage.getItem('token');
     if (token) {
-      mainApi
-        .checkToken(token)
-        .then((res) => {
-          mainApi.setToken(token);
-          setCurrentUser(res);
-        })
-        .catch((err) => {
-          localStorage.removeItem('token');
-          localStorage.removeItem('searchText');
-          localStorage.removeItem('areShortiesSeleted');
-          localStorage.removeItem('foundMovies');
-          setCurrentUser(null);
-          console.error(err);
-        });
+      try {
+        const res = await mainApi.checkToken(token);
+        mainApi.setToken(token);
+        setCurrentUser(res);
+      } catch (err) {
+        localStorage.removeItem('token');
+        localStorage.removeItem('searchText');
+        localStorage.removeItem('areShortiesSeleted');
+        localStorage.removeItem('foundMovies');
+        setCurrentUser(null);
+        console.error(err);
+      }
     }
-  }, []);
+    setIsLoading(false);
+  }
 
   function handleLogin({ token }) {
     localStorage.setItem('token', token);
@@ -66,7 +70,7 @@ function App() {
           <Route
             path="/movies"
             element={
-              <ProtectedRoute>
+              <ProtectedRoute isLoading={isLoading}>
                 <Movies />
               </ProtectedRoute>
             }
@@ -74,7 +78,7 @@ function App() {
           <Route
             path="/saved-movies"
             element={
-              <ProtectedRoute>
+              <ProtectedRoute isLoading={isLoading}>
                 <SavedMovies />
               </ProtectedRoute>
             }
@@ -82,7 +86,7 @@ function App() {
           <Route
             path="/profile"
             element={
-              <ProtectedRoute>
+              <ProtectedRoute isLoading={isLoading}>
                 <Profile
                   onLogout={handleLogOut}
                   onUpdate={handleUpdateUserInfo}
