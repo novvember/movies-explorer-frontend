@@ -13,7 +13,7 @@
   line-height: 1.25;
   text-align: center;
   /* Анимация */
-  transition: opacity.3s, transform 0.3s;
+  transition: opacity.3s, transform 0.3s, color 0.3s, background-color 0.3s;
 }
 
 .submit-button:hover {
