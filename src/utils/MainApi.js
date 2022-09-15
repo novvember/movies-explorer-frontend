@@ -36,12 +36,12 @@ class MainApi {
   }
 
   setToken(token) {
-    this._authHeaders.Authorization = token;
+    this._authHeaders.Authorization = `Bearer ${token}`;
   }
 
   async checkToken(token) {
     const url = `${this._baseUrl}/users/me`;
-    const headers = { ...this._authHeaders, Authorization: token };
+    const headers = { ...this._authHeaders, Authorization: `Bearer ${token}` };
 
     const res = await fetch(url, {
       headers,

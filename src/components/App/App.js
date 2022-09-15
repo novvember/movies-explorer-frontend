@@ -16,12 +16,32 @@ function App() {
 
   const navigate = useNavigate();
 
+  // Авторизация при открытии страницы
+  React.useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      mainApi
+        .checkToken(token)
+        .then((res) => {
+          mainApi.setToken(token);
+          setCurrentUser(res);
+        })
+        .catch((err) => {
+          localStorage.removeItem('token');
+          setCurrentUser(null);
+          console.error(err);
+        });
+    }
+  }, [navigate]);
+
   async function handleLogin({ token }) {
     if (token) {
       localStorage.setItem('token', token);
       mainApi.setToken(token);
+      const user = await mainApi.getUserInfo();
+      setCurrentUser(user);
+      navigate('/movies');
     }
-    navigate('/movies');
   }
 
   return (

@@ -43,6 +43,7 @@ function Login({ onLogin }) {
       }
       setRequestError(message);
     }
+
     setIsLoading(false);
   }
 
