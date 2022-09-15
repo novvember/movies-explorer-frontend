@@ -16,7 +16,7 @@ class MainApi {
     });
 
     const data = await res.json();
-    if (!res.ok) return new Error(data.message);
+    if (!res.ok) throw new Error(data.message);
     return data;
   }
 
@@ -32,7 +32,7 @@ class MainApi {
     });
 
     const data = await res.json();
-    if (!res.ok) return new Error(data.message);
+    if (!res.ok) throw new Error(data.message);
     return data;
   }
 
@@ -49,7 +49,7 @@ class MainApi {
     });
 
     const data = await res.json();
-    if (!res.ok) return new Error(data.message);
+    if (!res.ok) throw new Error(data.message);
     return data;
   }
 
@@ -61,7 +61,7 @@ class MainApi {
     });
 
     const data = await res.json();
-    if (!res.ok) return new Error(data.message);
+    if (!res.ok) throw new Error(data.message);
     return data;
   }
 
@@ -75,7 +75,7 @@ class MainApi {
     });
 
     const data = await res.json();
-    if (!res.ok) return new Error(data.message);
+    if (!res.ok) throw new Error(data.message);
     return data;
   }
 
@@ -87,7 +87,7 @@ class MainApi {
     });
 
     const data = await res.json();
-    if (!res.ok) return new Error(data.message);
+    if (!res.ok) throw new Error(data.message);
     return data;
   }
 
@@ -101,7 +101,7 @@ class MainApi {
     });
 
     const data = await res.json();
-    if (!res.ok) return new Error(data.message);
+    if (!res.ok) throw new Error(data.message);
     return data;
   }
 
@@ -114,7 +114,7 @@ class MainApi {
     });
 
     const data = await res.json();
-    if (!res.ok) return new Error(data.message);
+    if (!res.ok) throw new Error(data.message);
     return data;
   }
 }
