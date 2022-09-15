@@ -1,7 +1,6 @@
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Landing from '../landing/Landing/Landing';
 import Movies from '../movies/Movies/Movies';
-import ProfilePage from '../user/ProfilePage/ProfilePage';
 import SavedMovies from '../movies/SavedMovies/SavedMovies';
 import Page404 from '../Page404/Page404';
 import './App.css';
@@ -10,6 +9,7 @@ import Login from '../user/Login/Login';
 import React from 'react';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import mainApi from '../../utils/MainApi';
+import Profile from '../user/Profile/Profile';
 
 function App() {
   const [currentUser, setCurrentUser] = React.useState(null);
@@ -51,7 +51,7 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="/saved-movies" element={<SavedMovies />} />
-          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/profile" element={<Profile />} />
           <Route
             path="/signup"
             element={<Register onRegister={handleLogin} />}
