@@ -6,8 +6,9 @@ import AuthInputForEmail from '../AuthInputForEmail/AuthInputForEmail';
 import AuthInputForName from '../AuthInputForName/AuthInputForName';
 import AuthInputForPassword from '../AuthInputForPassword/AuthInputForPassword';
 import mainApi from '../../../utils/MainApi';
+import { REQUEST_ERRORS } from '../../../utils/config';
 
-function Register() {
+function Register({ onRegister }) {
   const TITLE = 'Добро пожаловать!';
   const HINT = (
     <p className="auth__hint">
@@ -29,10 +30,18 @@ function Register() {
     setIsLoading(true);
     setRequestError('');
     try {
-      const res = await mainApi.register(values);
-      // console.log(res);
+      await mainApi.register(values);
+      await onRegister(values);
     } catch (err) {
-      setRequestError(err.message);
+      let message;
+      switch (err.message) {
+        case '409':
+          message = REQUEST_ERRORS.SIGNUP_409;
+          break;
+        default:
+          message = REQUEST_ERRORS.SIGNUP_DEFAULT;
+      }
+      setRequestError(message);
     }
     setIsLoading(false);
   }

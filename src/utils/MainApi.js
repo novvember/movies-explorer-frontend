@@ -6,7 +6,6 @@ class MainApi {
 
   async register({ email, password, name }) {
     const url = `${this._baseUrl}/signup`;
-
     const res = await fetch(url, {
       method: 'POST',
       headers: {
@@ -16,7 +15,7 @@ class MainApi {
     });
 
     const data = await res.json();
-    if (!res.ok) throw new Error(data.message);
+    if (!res.ok) throw new Error(res.status);
     return data;
   }
 
