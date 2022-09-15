@@ -10,6 +10,7 @@ import React from 'react';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import mainApi from '../../utils/MainApi';
 import Profile from '../user/Profile/Profile';
+import ProtectedRoute from '../user/ProtectedRoute/ProtectedRoute';
 
 function App() {
   const [currentUser, setCurrentUser] = React.useState(null);
@@ -58,11 +59,29 @@ function App() {
       <div className="content">
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/saved-movies" element={<SavedMovies />} />
+          <Route
+            path="/movies"
+            element={
+              <ProtectedRoute>
+                <Movies />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/saved-movies"
+            element={
+              <ProtectedRoute>
+                <SavedMovies />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/profile"
-            element={<Profile onLogout={handleLogOut} />}
+            element={
+              <ProtectedRoute>
+                <Profile onLogout={handleLogOut} />
+              </ProtectedRoute>
+            }
           />
           <Route path="/signup" element={<Register onLogin={handleLogin} />} />
           <Route path="/signin" element={<Login onLogin={handleLogin} />} />
