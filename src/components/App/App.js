@@ -30,13 +30,13 @@ function App() {
         .catch((err) => {
           localStorage.removeItem('token');
           localStorage.removeItem('searchText');
-          localStorage.removeItem('areShortiesSelected');
+          localStorage.removeItem('areShortiesSeleted');
           localStorage.removeItem('foundMovies');
           setCurrentUser(null);
           console.error(err);
         });
     }
-  }, [navigate]);
+  }, []);
 
   function handleLogin({ token }) {
     localStorage.setItem('token', token);
@@ -48,7 +48,7 @@ function App() {
   function handleLogOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('searchText');
-    localStorage.removeItem('areShortiesSelected');
+    localStorage.removeItem('areShortiesSeleted');
     localStorage.removeItem('foundMovies');
     setCurrentUser(null);
     navigate('/');
