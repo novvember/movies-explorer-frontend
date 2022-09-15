@@ -24,6 +24,7 @@ function App() {
   }, []);
 
   async function checkToken() {
+    setIsLoading(true);
     const token = localStorage.getItem('token');
     if (token) {
       try {
@@ -45,7 +46,7 @@ function App() {
   function handleLogin({ token }) {
     localStorage.setItem('token', token);
     mainApi.setToken(token);
-    setCurrentUser({});
+    checkToken(token);
     navigate('/movies');
   }
 
