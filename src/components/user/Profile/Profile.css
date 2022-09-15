@@ -123,6 +123,11 @@
   color: var(--on-surface-variant);
 }
 
+.profile__input_type_error,
+.profile__input_type_error:focus {
+  color: var(--error);
+}
+
 .profile__error-message {
   margin: 0;
   margin-top: auto;

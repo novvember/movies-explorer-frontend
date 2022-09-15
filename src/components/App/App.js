@@ -45,6 +45,10 @@ function App() {
     navigate('/movies');
   }
 
+  function handleUpdateUserInfo(res) {
+    setCurrentUser(res);
+  }
+
   function handleLogOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('searchText');
@@ -79,7 +83,10 @@ function App() {
             path="/profile"
             element={
               <ProtectedRoute>
-                <Profile onLogout={handleLogOut} />
+                <Profile
+                  onLogout={handleLogOut}
+                  onUpdate={handleUpdateUserInfo}
+                />
               </ProtectedRoute>
             }
           />
