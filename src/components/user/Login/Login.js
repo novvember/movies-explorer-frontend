@@ -31,7 +31,9 @@ function Login({ onLogin }) {
 
     try {
       const res = await mainApi.login(values);
-      await onLogin(res);
+      if (res.token) {
+        onLogin(res);
+      }
     } catch (err) {
       let message;
       switch (err.message) {

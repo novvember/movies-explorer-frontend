@@ -16,7 +16,7 @@ function App() {
 
   const navigate = useNavigate();
 
-  // Авторизация при открытии страницы
+  // Авторизация при открытии страницы по сохраненному логину
   React.useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -28,24 +28,27 @@ function App() {
         })
         .catch((err) => {
           localStorage.removeItem('token');
+          localStorage.removeItem('searchText');
+          localStorage.removeItem('areShortiesSelected');
+          localStorage.removeItem('foundMovies');
           setCurrentUser(null);
           console.error(err);
         });
     }
   }, [navigate]);
 
-  async function handleLogin({ token }) {
-    if (token) {
-      localStorage.setItem('token', token);
-      mainApi.setToken(token);
-      const user = await mainApi.getUserInfo();
-      setCurrentUser(user);
-      navigate('/movies');
-    }
+  function handleLogin({ token }) {
+    localStorage.setItem('token', token);
+    mainApi.setToken(token);
+    setCurrentUser({});
+    navigate('/movies');
   }
 
   function handleLogOut() {
     localStorage.removeItem('token');
+    localStorage.removeItem('searchText');
+    localStorage.removeItem('areShortiesSelected');
+    localStorage.removeItem('foundMovies');
     setCurrentUser(null);
     navigate('/');
   }
@@ -61,10 +64,7 @@ function App() {
             path="/profile"
             element={<Profile onLogout={handleLogOut} />}
           />
-          <Route
-            path="/signup"
-            element={<Register onRegister={handleLogin} />}
-          />
+          <Route path="/signup" element={<Register onLogin={handleLogin} />} />
           <Route path="/signin" element={<Login onLogin={handleLogin} />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
