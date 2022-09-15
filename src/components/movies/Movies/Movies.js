@@ -1,7 +1,6 @@
 import React from 'react';
 import Footer from '../../common/Footer/Footer';
 import Header from '../../common/Header/Header';
-import Navigation from '../../common/Navigation/Navigation';
 import SearchForm from '../SearchForm/SearchForm';
 import './Movies.css';
 import moviesApi from '../../../utils/MoviesApi';
@@ -101,9 +100,7 @@ function Movies() {
 
   return (
     <>
-      <Header>
-        <Navigation />
-      </Header>
+      <Header />
       <main aria-label="Поиск фильмов">
         <SearchForm
           onSubmit={handleSearchFormSubmit}

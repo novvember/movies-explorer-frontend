@@ -11,11 +11,10 @@ import React from 'react';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 function App() {
-  const [currentUser, setCurrentUser] = React.useState({});
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [currentUser, setCurrentUser] = React.useState(null);
 
   return (
-    <CurrentUserContext.Provider user={currentUser}>
+    <CurrentUserContext.Provider value={currentUser}>
       <div className="content">
         <Routes>
           <Route path="/" element={<Landing />} />
