@@ -31,7 +31,11 @@ function Register({ onRegister }) {
     setRequestError('');
     try {
       await mainApi.register(values);
-      await onRegister(values);
+      const res = await mainApi.login({
+        email: values.email,
+        password: values.password,
+      });
+      await onRegister(res);
     } catch (err) {
       let message;
       switch (err.message) {

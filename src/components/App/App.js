@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import Landing from '../landing/Landing/Landing';
 import Movies from '../movies/Movies/Movies';
 import ProfilePage from '../user/ProfilePage/ProfilePage';
@@ -9,12 +9,19 @@ import Register from '../user/Register/Register';
 import Login from '../user/Login/Login';
 import React from 'react';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
+import mainApi from '../../utils/MainApi';
 
 function App() {
   const [currentUser, setCurrentUser] = React.useState(null);
 
-  async function handleRegister({ email, password }) {
-    console.log('registered');
+  const navigate = useNavigate();
+
+  async function handleLogin({ token }) {
+    if (token) {
+      localStorage.setItem('token', token);
+      mainApi.setToken(token);
+    }
+    navigate('/movies');
   }
 
   return (
@@ -27,9 +34,9 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route
             path="/signup"
-            element={<Register onRegister={handleRegister} />}
+            element={<Register onRegister={handleLogin} />}
           />
-          <Route path="/signin" element={<Login />} />
+          <Route path="/signin" element={<Login onLogin={handleLogin} />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
       </div>
