@@ -1,9 +1,15 @@
 import React from 'react';
+import CurrentUserContext from '../../../contexts/CurrentUserContext';
+import useForm from '../../../utils/hooks/useFormWithValidation';
 import Header from '../../common/Header/Header';
 import SubmitButton from '../SubmitButton/SubmitButton';
 import './Profile.css';
 
-function Profile() {
+function Profile({ onLogout }) {
+  const currentUser = React.useContext(CurrentUserContext);
+
+  const [values, errors, isValid, handleChange] = useForm();
+
   const [isInEditMode, setIsInEditMode] = React.useState(true);
 
   function switchEditMode(evt) {
@@ -16,7 +22,9 @@ function Profile() {
       <Header />
       <main className="profile content__stretched-element">
         <div className="profile__container">
-          <h1 className="profile__title">Привет, Джон!</h1>
+          <h1 className="profile__title">{`Привет, ${
+            currentUser?.name ?? 'Джон'
+          }!`}</h1>
           <form className="profile__form">
             <label className="profile__input-container">
               <span className="profile__input-label">Имя</span>
@@ -28,6 +36,8 @@ function Profile() {
                 maxLength="30"
                 required={true}
                 placeholder="Джон Макклейн"
+                value={values.name ?? currentUser?.name ?? ''}
+                onChange={handleChange}
                 {...(!isInEditMode ? { disabled: true } : {})}
               />
             </label>
@@ -39,6 +49,8 @@ function Profile() {
                 name="email"
                 required={true}
                 placeholder="mcclane@nakatomi.corp"
+                value={values.email ?? currentUser?.email ?? ''}
+                onChange={handleChange}
                 {...(!isInEditMode ? { disabled: true } : {})}
               />
             </label>
@@ -61,7 +73,10 @@ function Profile() {
                 </button>
               </li>
               <li className="profile__links-item">
-                <button className="profile__link profile__link_type_logout">
+                <button
+                  className="profile__link profile__link_type_logout"
+                  onClick={onLogout}
+                >
                   Выйти из аккаунта
                 </button>
               </li>

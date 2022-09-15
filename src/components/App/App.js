@@ -44,6 +44,12 @@ function App() {
     }
   }
 
+  function handleLogOut() {
+    localStorage.removeItem('token');
+    setCurrentUser(null);
+    navigate('/');
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="content">
@@ -51,7 +57,10 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="/saved-movies" element={<SavedMovies />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/profile"
+            element={<Profile onLogout={handleLogOut} />}
+          />
           <Route
             path="/signup"
             element={<Register onRegister={handleLogin} />}
