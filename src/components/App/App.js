@@ -10,42 +10,56 @@ import React from 'react';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import mainApi from '../../utils/MainApi';
 import Profile from '../user/Profile/Profile';
+import ProtectedRoute from '../user/ProtectedRoute/ProtectedRoute';
+import AnonymousRoute from '../user/AnonymousRoute/AnonymousRoute';
 
 function App() {
-  const [currentUser, setCurrentUser] = React.useState(null);
+  const [currentUser, setCurrentUser] = React.useState();
+  const [isLoading, setIsLoading] = React.useState(true);
 
   const navigate = useNavigate();
 
-  // Авторизация при открытии страницы
+  // Авторизация при открытии страницы по сохраненному логину
   React.useEffect(() => {
+    checkToken();
+  }, []);
+
+  async function checkToken() {
+    setIsLoading(true);
     const token = localStorage.getItem('token');
     if (token) {
-      mainApi
-        .checkToken(token)
-        .then((res) => {
-          mainApi.setToken(token);
-          setCurrentUser(res);
-        })
-        .catch((err) => {
-          localStorage.removeItem('token');
-          setCurrentUser(null);
-          console.error(err);
-        });
+      try {
+        const res = await mainApi.checkToken(token);
+        mainApi.setToken(token);
+        setCurrentUser(res);
+      } catch (err) {
+        localStorage.removeItem('token');
+        localStorage.removeItem('searchText');
+        localStorage.removeItem('areShortiesSeleted');
+        localStorage.removeItem('foundMovies');
+        setCurrentUser(null);
+        console.error(err);
+      }
     }
-  }, [navigate]);
+    setIsLoading(false);
+  }
 
-  async function handleLogin({ token }) {
-    if (token) {
-      localStorage.setItem('token', token);
-      mainApi.setToken(token);
-      const user = await mainApi.getUserInfo();
-      setCurrentUser(user);
-      navigate('/movies');
-    }
+  function handleLogin({ token }) {
+    localStorage.setItem('token', token);
+    mainApi.setToken(token);
+    checkToken(token);
+    navigate('/movies');
+  }
+
+  function handleUpdateUserInfo(res) {
+    setCurrentUser(res);
   }
 
   function handleLogOut() {
     localStorage.removeItem('token');
+    localStorage.removeItem('searchText');
+    localStorage.removeItem('areShortiesSeleted');
+    localStorage.removeItem('foundMovies');
     setCurrentUser(null);
     navigate('/');
   }
@@ -55,17 +69,49 @@ function App() {
       <div className="content">
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/saved-movies" element={<SavedMovies />} />
+          <Route
+            path="/movies"
+            element={
+              <ProtectedRoute isLoading={isLoading}>
+                <Movies />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/saved-movies"
+            element={
+              <ProtectedRoute isLoading={isLoading}>
+                <SavedMovies />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/profile"
-            element={<Profile onLogout={handleLogOut} />}
+            element={
+              <ProtectedRoute isLoading={isLoading}>
+                <Profile
+                  onLogout={handleLogOut}
+                  onUpdate={handleUpdateUserInfo}
+                />
+              </ProtectedRoute>
+            }
           />
           <Route
             path="/signup"
-            element={<Register onRegister={handleLogin} />}
+            element={
+              <AnonymousRoute isLoading={isLoading}>
+                <Register onLogin={handleLogin} />
+              </AnonymousRoute>
+            }
           />
-          <Route path="/signin" element={<Login onLogin={handleLogin} />} />
+          <Route
+            path="/signin"
+            element={
+              <AnonymousRoute isLoading={isLoading}>
+                <Login onLogin={handleLogin} />
+              </AnonymousRoute>
+            }
+          />
           <Route path="*" element={<Page404 />} />
         </Routes>
       </div>

@@ -8,7 +8,7 @@ import AuthInputForPassword from '../AuthInputForPassword/AuthInputForPassword';
 import mainApi from '../../../utils/MainApi';
 import { REQUEST_ERRORS } from '../../../utils/config';
 
-function Register({ onRegister }) {
+function Register({ onLogin }) {
   const TITLE = 'Добро пожаловать!';
   const HINT = (
     <p className="auth__hint">
@@ -31,11 +31,11 @@ function Register({ onRegister }) {
     setRequestError('');
     try {
       await mainApi.register(values);
-      const res = await mainApi.login({
-        email: values.email,
-        password: values.password,
-      });
-      await onRegister(res);
+      const { email, password } = values;
+      const res = await mainApi.login({ email, password });
+      if (res.token) {
+        onLogin(res);
+      }
     } catch (err) {
       let message;
       switch (err.message) {
