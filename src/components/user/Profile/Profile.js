@@ -14,6 +14,9 @@ function Profile({ onLogout, onUpdate }) {
   const [values, errors, isValid, handleChange] = useForm(currentUser);
   const [requestError, setRequestError] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
+  const [isSuccussMessageShown, setIsSuccussMessageShown] = React.useState(
+    false,
+  );
 
   const [areSameValues, setAreSameValues] = React.useState(true);
 
@@ -36,10 +39,12 @@ function Profile({ onLogout, onUpdate }) {
     event.preventDefault();
     setIsLoading(true);
     setRequestError('');
+    setIsSuccussMessageShown(false);
     try {
       const res = await mainApi.updateUserInfo(values);
       onUpdate(res);
       switchEditMode();
+      showSuccessMessage();
     } catch (err) {
       console.log(err);
       let message;
@@ -53,6 +58,11 @@ function Profile({ onLogout, onUpdate }) {
       setRequestError(message);
     }
     setIsLoading(false);
+  }
+
+  function showSuccessMessage() {
+    setIsSuccussMessageShown(true);
+    setTimeout(() => setIsSuccussMessageShown(false), 2000);
   }
 
   return (
@@ -98,6 +108,9 @@ function Profile({ onLogout, onUpdate }) {
                 {...(!isInEditMode ? { disabled: true } : {})}
               />
             </label>
+            <p className="profile__success-message">
+              {isSuccussMessageShown && 'Сохранено!'}
+            </p>
 
             {isInEditMode && (
               <>
