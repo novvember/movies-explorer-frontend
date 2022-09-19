@@ -24,11 +24,18 @@ function MoviesCard({ movie, isSaved, onClick, isSavedMovieCard = false }) {
         'минуты',
         'минут',
       ])}`}</p>
-      <img
-        src={movie.image}
-        alt={`Кадр из фильма ${movie.nameRU}`}
-        className="movie-card__thumbnail"
-      />
+      <a
+        href={movie.trailerLink}
+        className="movie-card__link"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <img
+          src={movie.image}
+          alt={`Кадр из фильма ${movie.nameRU}`}
+          className="movie-card__thumbnail"
+        />
+      </a>
 
       {isSavedMovieCard ? (
         <SavedCardButton onClick={handleClick} disabled={isLoading} />
