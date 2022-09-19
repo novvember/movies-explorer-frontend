@@ -82,7 +82,6 @@ function Movies() {
 
   // Сохранение фильмов
   async function handleCardClick(movie) {
-    console.log(savedMovies);
     const isSaved = savedMovies.some(
       (savedMovie) => savedMovie.movieId === movie.movieId,
     );

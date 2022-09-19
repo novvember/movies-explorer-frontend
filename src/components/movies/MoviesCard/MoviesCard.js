@@ -31,7 +31,7 @@ function MoviesCard({ movie, isSaved, onClick, isSavedMovieCard = false }) {
       />
 
       {isSavedMovieCard ? (
-        <SavedCardButton onClick={handleClick} />
+        <SavedCardButton onClick={handleClick} disabled={isLoading} />
       ) : (
         <GeneralCardButton
           isSaved={isSaved}
