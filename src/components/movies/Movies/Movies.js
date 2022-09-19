@@ -4,10 +4,18 @@ import Header from '../../common/Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
 import './Movies.css';
 import moviesApi from '../../../utils/MoviesApi';
+import mainApi from '../../../utils/MainApi';
 import searchMovies from '../../../utils/searchMovies';
 import SearchResults from '../SearchResults/SearchResults';
+import formatMovies from '../../../utils/formatMovies';
 
 function Movies() {
+  // Данные обо всех фильмах из API
+  const [allMovies, setAllMovies] = React.useState(null);
+
+  // Сохраненные фильмы
+  const [savedMovies, setSavedMovies] = React.useState([]);
+
   // Значения параметров поиска при загрузке
   const defaultSearchText = localStorage.getItem('searchText') ?? '';
   const defaultAreShortiesSeleted =
@@ -22,15 +30,16 @@ function Movies() {
   );
   const [foundMovies, setFoundMovies] = React.useState(defaultFoundMovies);
 
-  // Данные обо всех фильмах из API
-  const [allMovies, setAllMovies] = React.useState(null);
-
-  // Сохраненные фильмы
-  const [savedMovies, setSavedMovies] = React.useState([]);
-
   // Служебные сообщения
   const [isLoading, setIsLoading] = React.useState(false);
   const [isErrorOnLoading, setIsErrorOnLoading] = React.useState(false);
+
+  // Сохранение параметров поиска в localStorage
+  React.useEffect(() => {
+    localStorage.setItem('searchText', searchText);
+    localStorage.setItem('areShortiesSeleted', areShortiesSeleted);
+    localStorage.setItem('foundMovies', JSON.stringify(foundMovies));
+  }, [searchText, areShortiesSeleted, foundMovies]);
 
   // Поиск фильмов
   React.useEffect(() => {
@@ -44,19 +53,14 @@ function Movies() {
     }
   }, [searchText, areShortiesSeleted, allMovies]);
 
-  // Сохранение параметров поиска в localStorage
-  React.useEffect(() => {
-    localStorage.setItem('searchText', searchText);
-    localStorage.setItem('areShortiesSeleted', areShortiesSeleted);
-    localStorage.setItem('foundMovies', JSON.stringify(foundMovies));
-  }, [searchText, areShortiesSeleted, foundMovies]);
-
   // Запрос к API
   async function getMovies() {
     setIsErrorOnLoading(false);
     setIsLoading(true);
     try {
-      const movies = await moviesApi.getMovies();
+      let movies = await moviesApi.getMovies();
+
+      movies = movies.map(formatMovies);
       setAllMovies(movies);
     } catch {
       setIsErrorOnLoading(true);
@@ -77,25 +81,45 @@ function Movies() {
   }
 
   // Сохранение фильмов
-  function handleCardClick(movieId) {
-    const isSaved = savedMovies.some((savedMovie) => savedMovie.id === movieId);
+  function handleCardClick(movieData) {
+    const isSaved = savedMovies.some(
+      (savedMovie) => savedMovie.id === movieData.id,
+    );
     if (isSaved) {
-      deleteSavedMovie(movieId);
+      deleteSavedMovie(movieData);
     } else {
-      addSavedMovie(movieId);
+      addSavedMovie(movieData);
     }
-    console.log(savedMovies);
   }
 
-  function deleteSavedMovie(movieId) {
-    setSavedMovies((movies) => movies.filter((movie) => movie.id !== movieId));
+  async function deleteSavedMovie(movieData) {
+    setSavedMovies((movies) =>
+      movies.filter((movie) => movie.id !== movieData.id),
+    );
   }
 
-  function addSavedMovie(movieId) {
-    setSavedMovies((movies) => [
-      ...movies,
-      allMovies.find((movie) => movie.id === movieId),
-    ]);
+  async function addSavedMovie(movieData) {
+    try {
+      const savedMovie = await mainApi.saveMovie(movieData);
+      if (savedMovie) {
+        setSavedMovies((movies) => [...movies, savedMovie]);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  React.useEffect(() => {
+    getSavedMovies();
+  }, []);
+
+  async function getSavedMovies() {
+    try {
+      const movies = await mainApi.getSavedMovies();
+      setSavedMovies(movies);
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   return (

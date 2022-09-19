@@ -2,28 +2,27 @@ import './MoviesCard.css';
 
 import React from 'react';
 import getNumDeclination from '../../../utils/getNumDeclination';
-import { MOVIE_API } from '../../../utils/config';
 import GeneralCardButton from '../GeneralCardButton/GeneralCardButton';
 import SavedCardButton from '../SavedCardButton/SavedCardButton';
 
-function MoviesCard({ movieData, isSaved, onClick, isSavedMovieCard = false }) {
+function MoviesCard({ movie, isSaved, onClick, isSavedMovieCard = false }) {
   function handleClick() {
-    onClick(movieData.id);
+    onClick(movie);
   }
 
   return (
     <li className="movie-card">
-      <h3 className="movie-card__name">{movieData.nameRU}</h3>
+      <h3 className="movie-card__name">{movie.nameRU}</h3>
       <p className="movie-card__duration">{`${
-        movieData.duration
-      } ${getNumDeclination(movieData.duration, [
+        movie.duration
+      } ${getNumDeclination(movie.duration, [
         'минута',
         'минуты',
         'минут',
       ])}`}</p>
       <img
-        src={MOVIE_API.MEDIA_BASE_URL + movieData.image.url}
-        alt={`Кадр из фильма ${movieData.name}`}
+        src={movie.image}
+        alt={`Кадр из фильма ${movie.nameRU}`}
         className="movie-card__thumbnail"
       />
 

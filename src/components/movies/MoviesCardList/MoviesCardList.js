@@ -50,8 +50,8 @@ function MoviesCardList({
         {renderedMovies.map((movie) => {
           return (
             <MoviesCard
-              movieData={movie}
-              key={movie.id}
+              movie={movie}
+              key={movie.movieId}
               isSaved={checkIsMovieSaved(movie.id)}
               onClick={onCardClick}
               isSavedMovieCard={isSavedMoviesCardList}
