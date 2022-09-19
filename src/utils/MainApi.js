@@ -104,8 +104,8 @@ class MainApi {
     return data;
   }
 
-  async deleteMovie(_id) {
-    const url = `${this._baseUrl}/movies/${_id}`;
+  async deleteMovie(id) {
+    const url = `${this._baseUrl}/movies/${id}`;
 
     const res = await fetch(url, {
       method: 'DELETE',

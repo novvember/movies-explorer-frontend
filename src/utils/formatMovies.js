@@ -6,6 +6,7 @@ export default function formatMovies(movie) {
     director: movie.director,
     duration: movie.duration,
     year: movie.year,
+    description: movie.description,
     image: MOVIE_API.MEDIA_BASE_URL + movie.image.url,
     trailerLink: movie.trailerLink,
     thumbnail: MOVIE_API.MEDIA_BASE_URL + movie.image.formats.thumbnail.url,

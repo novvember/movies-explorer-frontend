@@ -81,26 +81,36 @@ function Movies() {
   }
 
   // Сохранение фильмов
-  function handleCardClick(movieData) {
+  function handleCardClick(movie) {
+    console.log(savedMovies);
     const isSaved = savedMovies.some(
-      (savedMovie) => savedMovie.id === movieData.id,
+      (savedMovie) => savedMovie.movieId === movie.movieId,
     );
     if (isSaved) {
-      deleteSavedMovie(movieData);
+      const savedMovie = savedMovies.find(
+        (savedMovie) => savedMovie.movieId === movie.movieId,
+      );
+      deleteSavedMovie(savedMovie);
     } else {
-      addSavedMovie(movieData);
+      addSavedMovie(movie);
     }
   }
 
-  async function deleteSavedMovie(movieData) {
-    setSavedMovies((movies) =>
-      movies.filter((movie) => movie.id !== movieData.id),
-    );
+  async function deleteSavedMovie(movie) {
+    try {
+      await mainApi.deleteMovie(movie._id);
+
+      setSavedMovies((movies) =>
+        movies.filter((savedMovie) => savedMovie._id !== movie._id),
+      );
+    } catch (err) {
+      console.error(err);
+    }
   }
 
-  async function addSavedMovie(movieData) {
+  async function addSavedMovie(movie) {
     try {
-      const savedMovie = await mainApi.saveMovie(movieData);
+      const savedMovie = await mainApi.saveMovie(movie);
       if (savedMovie) {
         setSavedMovies((movies) => [...movies, savedMovie]);
       }
