@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/movies-explorer-frontend/static/css/main.3e860cb5.css",
-    "main.js": "/movies-explorer-frontend/static/js/main.7ec5b05a.js",
+    "main.css": "/movies-explorer-frontend/static/css/main.91695ac4.css",
+    "main.js": "/movies-explorer-frontend/static/js/main.ad346f4a.js",
     "static/media/Inter-italic.var.woff2?v=3.19": "/movies-explorer-frontend/static/media/Inter-italic.var.30807be7abc48ba8c73c.woff2",
     "static/media/Inter-roman.var.woff2?v=3.19": "/movies-explorer-frontend/static/media/Inter-roman.var.ba4caefcdf5b36b438db.woff2",
     "static/media/Inter-SemiBoldItalic.woff?v=3.19": "/movies-explorer-frontend/static/media/Inter-SemiBoldItalic.463bdbfb28abad0fa6df.woff",
@@ -42,6 +42,7 @@
     "static/media/Inter-Regular.woff2?v=3.19": "/movies-explorer-frontend/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
     "static/media/student-photo.jpg": "/movies-explorer-frontend/static/media/student-photo.a5acb239d870efc4a949.jpg",
     "static/media/icon__loading.svg": "/movies-explorer-frontend/static/media/icon__loading.76bb8adedea7da8c348a.svg",
+    "static/media/icon__loading_black.svg": "/movies-explorer-frontend/static/media/icon__loading_black.65d83093aff52ffba2e6.svg",
     "static/media/promo-background.svg": "/movies-explorer-frontend/static/media/promo-background.f6312ac91ded506bae4e.svg",
     "index.html": "/movies-explorer-frontend/index.html",
     "static/media/icon__delete.svg": "/movies-explorer-frontend/static/media/icon__delete.90ea25a40973659332af.svg",
@@ -50,11 +51,11 @@
     "static/media/icon__menu.svg": "/movies-explorer-frontend/static/media/icon__menu.b1d05f4380a7c8ca9d7a.svg",
     "static/media/icon__menu_white.svg": "/movies-explorer-frontend/static/media/icon__menu_white.4944d5eae9235b28a8ab.svg",
     "static/media/icon__done.svg": "/movies-explorer-frontend/static/media/icon__done.009ab2eade12855876d9.svg",
-    "main.3e860cb5.css.map": "/movies-explorer-frontend/static/css/main.3e860cb5.css.map",
-    "main.7ec5b05a.js.map": "/movies-explorer-frontend/static/js/main.7ec5b05a.js.map"
+    "main.91695ac4.css.map": "/movies-explorer-frontend/static/css/main.91695ac4.css.map",
+    "main.ad346f4a.js.map": "/movies-explorer-frontend/static/js/main.ad346f4a.js.map"
   },
   "entrypoints": [
-    "static/css/main.3e860cb5.css",
-    "static/js/main.7ec5b05a.js"
+    "static/css/main.91695ac4.css",
+    "static/js/main.ad346f4a.js"
   ]
 }
