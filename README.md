@@ -17,15 +17,9 @@
 
 ## Демо
 
-На GitHub Pages:
-[`novvember.github.io/movies-explorer-frontend`](https://novvember.github.io/movies-explorer-frontend)
+На GitHub Pages: [`movies.novvember.tk`](https://movies.novvember.tk/)
 
-На отдельном сервере в Яндекс.Облаке:
-
-- страницы, доступные без логина (главная):
-  [`movies.novvember.nomoredomains.sbs`](https://movies.novvember.nomoredomains.sbs)
-- страницы, доступные только после авторизации:
-  [`movies.novvember.nomoredomains.sbs/movies`](https://movies.novvember.nomoredomains.sbs/movies)
+На отдельном сервере в Яндекс.Облаке: [`movies.novvember.nomoredomains.sbs`](https://movies.novvember.nomoredomains.sbs)
 
 ### Используемые API
 
@@ -45,7 +39,7 @@
 - Регистрация/авторизация пользователей
 - Сохранение/удаление фильмов в личном кабинете
 - Редактирование информации о пользователе
--
+- Валидация форм
 
 ## Стек технологий
 
@@ -53,7 +47,9 @@
 - React
 - React Router 6
 - Работа с API
--
+- Валидация форм с помощью кастомных хуков
+- Хранение JWT-токена в localStorage
+- React Context
 
 ## Статус разработки
 
