@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
+import useForm from '../../../utils/hooks/useForm';
 import Checkbox from '../Checkbox/Checkbox';
 import './SearchForm.css';
 
@@ -15,38 +16,19 @@ function SearchForm({
     areShortiesSeleted: defaultAreShortiesSeleted,
   };
 
-  const form = React.useRef();
-
-  const [inputValues, setInputValues] = React.useState(defaultValues);
-  const [isValid, setIsValid] = React.useState(true);
-  const [isErrorShown, setIsErrorShown] = React.useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [values, errors, isValid, handleChange] = useForm(defaultValues);
   const [errorText, setErrorText] = React.useState('');
 
-  function handleChange(event) {
-    const input = event.target;
-    const name = input.name;
-    let value;
-    if (input.type === 'checkbox') {
-      value = input.checked;
-      onCheckboxChange(value);
-    } else {
-      value = input.value;
-    }
-    setInputValues((state) => ({ ...state, [name]: value }));
-    validateForm();
-  }
-
-  function validateForm() {
-    setIsValid(form.current.checkValidity());
-  }
-
   React.useEffect(() => {
-    validateForm();
-  }, []);
+    if (values.areShortiesSeleted !== defaultAreShortiesSeleted) {
+      onCheckboxChange(values.areShortiesSeleted);
+    }
+  }, [values.areShortiesSeleted, onCheckboxChange, defaultAreShortiesSeleted]);
 
   React.useEffect(() => {
     if (isValid) {
-      setIsErrorShown(false);
+      setErrorText('');
     }
   }, [isValid]);
 
@@ -54,28 +36,22 @@ function SearchForm({
     event.preventDefault();
     if (!isValid) {
       setErrorText('Нужно ввести ключевое слово');
-      setIsErrorShown(true);
       return;
     }
-    onSubmit(inputValues);
+    onSubmit(values);
   }
 
   return (
-    <form
-      className="search-form section"
-      onSubmit={handleSubmit}
-      noValidate
-      ref={form}
-    >
+    <form className="search-form section" onSubmit={handleSubmit} noValidate>
       <input
         type="text"
         className={classNames('search-form__input', {
-          'search-form__input_invalid': isErrorShown,
+          'search-form__input_invalid': errorText,
         })}
         placeholder="Фильм"
         name="searchText"
         required
-        value={inputValues.searchText}
+        value={values.searchText}
         onChange={handleChange}
         disabled={isBlocked}
       />
@@ -83,11 +59,11 @@ function SearchForm({
         title="Короткометражки"
         className="search-form__checkbox"
         name="areShortiesSeleted"
-        checked={inputValues.areShortiesSeleted}
+        checked={values.areShortiesSeleted}
         onChange={handleChange}
         disabled={isBlocked}
       />
-      <span className="search-form__error">{isErrorShown && errorText}</span>
+      <span className="search-form__error">{errorText}</span>
       <button
         type="submit"
         className="search-form__button"
