@@ -6,8 +6,12 @@ import GeneralCardButton from '../GeneralCardButton/GeneralCardButton';
 import SavedCardButton from '../SavedCardButton/SavedCardButton';
 
 function MoviesCard({ movie, isSaved, onClick, isSavedMovieCard = false }) {
-  function handleClick() {
-    onClick(movie);
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  async function handleClick() {
+    setIsLoading(true);
+    await onClick(movie);
+    setIsLoading(false);
   }
 
   return (
@@ -29,7 +33,11 @@ function MoviesCard({ movie, isSaved, onClick, isSavedMovieCard = false }) {
       {isSavedMovieCard ? (
         <SavedCardButton onClick={handleClick} />
       ) : (
-        <GeneralCardButton isSaved={isSaved} onClick={handleClick} />
+        <GeneralCardButton
+          isSaved={isSaved}
+          onClick={handleClick}
+          disabled={isLoading}
+        />
       )}
     </li>
   );

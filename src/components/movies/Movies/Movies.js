@@ -81,7 +81,7 @@ function Movies() {
   }
 
   // Сохранение фильмов
-  function handleCardClick(movie) {
+  async function handleCardClick(movie) {
     console.log(savedMovies);
     const isSaved = savedMovies.some(
       (savedMovie) => savedMovie.movieId === movie.movieId,
@@ -90,9 +90,9 @@ function Movies() {
       const savedMovie = savedMovies.find(
         (savedMovie) => savedMovie.movieId === movie.movieId,
       );
-      deleteSavedMovie(savedMovie);
+      await deleteSavedMovie(savedMovie);
     } else {
-      addSavedMovie(movie);
+      await addSavedMovie(movie);
     }
   }
 
