@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { REQUEST_ERRORS } from '../../../utils/config';
-import useForm from '../../../utils/hooks/useFormWithValidation';
+import useForm from '../../../utils/hooks/useForm';
 import mainApi from '../../../utils/MainApi';
 import Auth from '../Auth/Auth';
 import AuthInputForEmail from '../AuthInputForEmail/AuthInputForEmail';

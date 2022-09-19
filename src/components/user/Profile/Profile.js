@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import React from 'react';
 import CurrentUserContext from '../../../contexts/CurrentUserContext';
 import { REQUEST_ERRORS } from '../../../utils/config';
-import useForm from '../../../utils/hooks/useFormWithValidation';
+import useFilledForm from '../../../utils/hooks/useFormWithValidationForProfile';
 import mainApi from '../../../utils/MainApi';
 import Header from '../../common/Header/Header';
 import SubmitButton from '../SubmitButton/SubmitButton';
@@ -10,30 +10,19 @@ import './Profile.css';
 
 function Profile({ onLogout, onUpdate }) {
   const currentUser = React.useContext(CurrentUserContext);
+
   const [isInEditMode, setIsInEditMode] = React.useState(false);
-  const [values, errors, isValid, handleChange] = useForm(currentUser);
-  const [requestError, setRequestError] = React.useState('');
+  const [values, errors, isValid, handleChange] = useFilledForm(currentUser);
+
   const [isLoading, setIsLoading] = React.useState(false);
+  const [requestError, setRequestError] = React.useState('');
   const [isSuccussMessageShown, setIsSuccussMessageShown] = React.useState(
     false,
   );
 
-  const [areSameValues, setAreSameValues] = React.useState(true);
-
   function switchEditMode() {
     setIsInEditMode((state) => !state);
   }
-
-  React.useEffect(() => {
-    if (
-      values.name === currentUser.name &&
-      values.email === currentUser.email
-    ) {
-      setAreSameValues(true);
-      return;
-    }
-    setAreSameValues(false);
-  }, [values, currentUser]);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -117,7 +106,7 @@ function Profile({ onLogout, onUpdate }) {
                 <p className="profile__error-message">{requestError}</p>
                 <SubmitButton
                   title="Сохранить"
-                  isDisabled={!isValid || areSameValues}
+                  isDisabled={!isValid}
                   isLoading={isLoading}
                 />
               </>
