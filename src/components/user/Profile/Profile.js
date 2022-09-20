@@ -80,6 +80,7 @@ function Profile({ onLogout, onUpdate }) {
                 disabled={isLoading}
                 {...(!isInEditMode ? { disabled: true } : {})}
               />
+              <span className="profile__input-error">{errors.name}</span>
             </label>
             <label className="profile__input-container">
               <span className="profile__input-label">E-mail</span>
@@ -96,6 +97,7 @@ function Profile({ onLogout, onUpdate }) {
                 disabled={isLoading}
                 {...(!isInEditMode ? { disabled: true } : {})}
               />
+              <span className="profile__input-error">{errors.email}</span>
             </label>
             <p className="profile__success-message">
               {isSuccussMessageShown && 'Сохранено!'}

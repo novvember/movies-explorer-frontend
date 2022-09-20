@@ -70,20 +70,21 @@
 }
 
 .profile__input-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  padding-block: 0;
-  border-bottom: 1px solid var(--background-variant-secondary);
-}
-
-.profile__input-container:last-of-type {
-  border-bottom: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 5px;
+  grid-template-areas:
+    'input'
+    'error';
+  margin-bottom: 5px;
 }
 
 .profile__input-label {
-  width: max-content;
+  grid-area: input;
+  z-index: 1;
+  justify-self: start;
+  align-self: s;
+  width: 80px;
   font-style: normal;
   font-weight: 500;
   font-size: 11px;
@@ -91,23 +92,27 @@
 }
 
 .profile__input {
+  grid-area: input;
   /* Сброс */
   display: block;
   background-color: transparent;
   border: none;
   /* Размер */
   flex-grow: 1;
-  padding-block: 16px;
-  border-radius: 8px;
+  padding-top: 0px;
+  padding-bottom: 16px;
+  padding-left: 100px;
   /* Текст */
   font-style: normal;
   font-weight: 400;
   font-size: 11px;
   line-height: 1.18;
   text-align: right;
+  /* Внешний вид */
+  border-bottom: 1px solid var(--background-variant-secondary);
   /* Анимация */
   background-color: transparent;
-  transition: opacity 0.3s, background-color 0.3s;
+  transition: opacity 0.3s, border-bottom-color 0.3s, color 0.3s;
 }
 
 .profile__input:disabled {
@@ -116,7 +121,7 @@
 
 .profile__input:focus {
   outline: none;
-  background-color: var(--auth-input);
+  border-bottom-color: var(--primary);
 }
 
 .profile__input::placeholder {
@@ -125,6 +130,23 @@
 
 .profile__input_type_error,
 .profile__input_type_error:focus {
+  color: var(--error);
+  border-bottom-color: var(--error);
+}
+
+.profile__input-container:last-of-type .profile__input:not(:focus) {
+  border-bottom-color: transparent;
+}
+
+.profile__input-error {
+  grid-area: error;
+  margin: 0;
+  min-height: 1.18em;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.18;
+  /* text-align: center; */
   color: var(--error);
 }
 
@@ -144,6 +166,7 @@
   margin: 0;
   margin-top: auto;
   margin-bottom: 20px;
+  min-height: 1.18em;
   font-style: normal;
   font-weight: 400;
   font-size: 11px;
