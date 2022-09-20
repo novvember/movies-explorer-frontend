@@ -1,4 +1,10 @@
 import React from 'react';
+import isEmail from 'validator/lib/isEmail';
+
+function validateEmail(value) {
+  const ERROR_MSG = 'Неверный формат электронной почты.';
+  return isEmail(value) ? '' : ERROR_MSG;
+}
 
 export default function useForm(initialValues = {}) {
   const [values, setValues] = React.useState(initialValues);
@@ -9,8 +15,17 @@ export default function useForm(initialValues = {}) {
     const input = event.target;
     const name = input.name;
     const value = input.type === 'checkbox' ? input.checked : input.value;
+
+    switch (input.type) {
+      case 'email':
+        const errorMessage = validateEmail(value);
+        setErrors((errors) => ({ ...errors, [name]: errorMessage }));
+        input.setCustomValidity(errorMessage);
+        break;
+      default:
+        setErrors((errors) => ({ ...errors, [name]: input.validationMessage }));
+    }
     setValues((values) => ({ ...values, [name]: value }));
-    setErrors((errors) => ({ ...errors, [name]: input.validationMessage }));
     setIsValid(input.closest('form').checkValidity());
   }
 
