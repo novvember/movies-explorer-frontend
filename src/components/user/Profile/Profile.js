@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React from 'react';
 import CurrentUserContext from '../../../contexts/CurrentUserContext';
-import { REQUEST_ERRORS } from '../../../utils/config';
+import { PLACEHOLDERS, REQUEST_ERRORS } from '../../../utils/config';
 import useFilledForm from '../../../utils/hooks/useFormWithValidationForProfile';
 import mainApi from '../../../utils/MainApi';
 import Header from '../../common/Header/Header';
@@ -41,6 +41,9 @@ function Profile({ onLogout, onUpdate }) {
         case '409':
           message = REQUEST_ERRORS.UPDATE_409;
           break;
+        case '500':
+          message = REQUEST_ERRORS.SERVER_500;
+          break;
         default:
           message = REQUEST_ERRORS.UPDATE_DEFAULT;
       }
@@ -60,7 +63,7 @@ function Profile({ onLogout, onUpdate }) {
       <main className="profile content__stretched-element">
         <div className="profile__container">
           <h1 className="profile__title">{`Привет, ${
-            currentUser?.name ?? 'Джон'
+            currentUser?.name ?? PLACEHOLDERS.NAME
           }!`}</h1>
           <form className="profile__form" noValidate onSubmit={handleSubmit}>
             <label className="profile__input-container">
@@ -74,7 +77,7 @@ function Profile({ onLogout, onUpdate }) {
                 minLength="2"
                 maxLength="30"
                 required={true}
-                placeholder="Джон Макклейн"
+                placeholder={PLACEHOLDERS.NAME}
                 value={values.name ?? ''}
                 onChange={handleChange}
                 disabled={isLoading}
@@ -91,7 +94,7 @@ function Profile({ onLogout, onUpdate }) {
                 })}
                 name="email"
                 required={true}
-                placeholder="mcclane@nakatomi.corp"
+                placeholder={PLACEHOLDERS.EMAIL}
                 value={values.email ?? ''}
                 onChange={handleChange}
                 disabled={isLoading}
@@ -100,7 +103,7 @@ function Profile({ onLogout, onUpdate }) {
               <span className="profile__input-error">{errors.email}</span>
             </label>
             <p className="profile__success-message">
-              {isSuccussMessageShown && 'Сохранено!'}
+              {isSuccussMessageShown && REQUEST_ERRORS.UPDATE_SUCCESSULLY}
             </p>
 
             {isInEditMode && (

@@ -1,3 +1,5 @@
+import { MAIN_API } from './config';
+
 class MainApi {
   constructor({ baseUrl, authHeaders }) {
     this._baseUrl = baseUrl;
@@ -119,11 +121,8 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-  baseUrl: 'https://api.movies.novvember.nomoredomains.sbs',
-  authHeaders: {
-    'Content-Type': 'application/json',
-    Authorization: 'jwt token here',
-  },
+  baseUrl: MAIN_API.BASE_URL,
+  authHeaders: MAIN_API.AUTH_HEADERS,
 });
 
 export default mainApi;

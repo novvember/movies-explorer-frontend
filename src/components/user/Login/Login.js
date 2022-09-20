@@ -40,6 +40,9 @@ function Login({ onLogin }) {
         case '401':
           message = REQUEST_ERRORS.SIGNIN_401;
           break;
+        case '500':
+          message = REQUEST_ERRORS.SERVER_500;
+          break;
         default:
           message = REQUEST_ERRORS.SIGNIN_DEFAULT;
       }

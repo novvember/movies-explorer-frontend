@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
+import { SEARCH_PARAMS } from '../../../utils/config';
 import useForm from '../../../utils/hooks/useForm';
 import Checkbox from '../Checkbox/Checkbox';
 import './SearchForm.css';
@@ -35,7 +36,7 @@ function SearchForm({
   function handleSubmit(event) {
     event.preventDefault();
     if (!isValid) {
-      setErrorText('Нужно ввести ключевое слово');
+      setErrorText(SEARCH_PARAMS.REQUIRED_ERROR);
       return;
     }
     onSubmit(values);
@@ -48,7 +49,7 @@ function SearchForm({
         className={classNames('search-form__input', {
           'search-form__input_invalid': errorText,
         })}
-        placeholder="Фильм"
+        placeholder={SEARCH_PARAMS.PLACEHOLDER}
         name="searchText"
         required
         value={values.searchText}
@@ -56,7 +57,7 @@ function SearchForm({
         disabled={isBlocked}
       />
       <Checkbox
-        title="Короткометражки"
+        title={SEARCH_PARAMS.SHORTIES}
         className="search-form__checkbox"
         name="areShortiesSeleted"
         checked={values.areShortiesSeleted}

@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import './AuthLinks.css';
+import { NAV_TEXTS } from '../../../utils/config';
 
 function AuthLinks() {
   return (
@@ -7,7 +8,7 @@ function AuthLinks() {
       <ul className="auth-links__list">
         <li className="auth-links__list-item">
           <NavLink to="/signup" className="auth-links__link">
-            Регистрация
+            {NAV_TEXTS.REGISTER}
           </NavLink>
         </li>
         <li className="auth-links__list-item">
@@ -15,7 +16,7 @@ function AuthLinks() {
             to="/signin"
             className="auth-links__link auth-links__link_type_login"
           >
-            Войти
+            {NAV_TEXTS.LOGIN}
           </NavLink>
         </li>
       </ul>

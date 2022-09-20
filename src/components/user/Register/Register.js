@@ -42,6 +42,9 @@ function Register({ onLogin }) {
         case '409':
           message = REQUEST_ERRORS.SIGNUP_409;
           break;
+        case '500':
+          message = REQUEST_ERRORS.SERVER_500;
+          break;
         default:
           message = REQUEST_ERRORS.SIGNUP_DEFAULT;
       }

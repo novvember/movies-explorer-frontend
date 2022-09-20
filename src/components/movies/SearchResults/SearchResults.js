@@ -1,4 +1,4 @@
-import { ERROR_MSGS } from '../../../utils/config';
+import { SEARCH_ERRORS } from '../../../utils/config';
 import Message from '../Message/Message';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
@@ -12,11 +12,11 @@ function SearchResults({
   isSavedMoviesSearchResult = false,
 }) {
   return isErrorOnLoading ? (
-    <Message text={ERROR_MSGS.CANT_GET_MOVIES} isError />
+    <Message text={SEARCH_ERRORS.CANT_GET_MOVIES} isError />
   ) : isLoading ? (
     <Preloader />
   ) : movies.length === 0 ? (
-    <Message text={ERROR_MSGS.NOT_FOUND} />
+    <Message text={SEARCH_ERRORS.NOT_FOUND} />
   ) : (
     <MoviesCardList
       movies={movies}

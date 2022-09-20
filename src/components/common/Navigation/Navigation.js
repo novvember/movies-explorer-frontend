@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
+import { NAV_TEXTS } from '../../../utils/config';
 import NavigationLink from '../NavigationLink/NavigationLink';
 import './Navigation.css';
 
@@ -31,11 +32,11 @@ function Navigation({ hasLinkToMain = true, isThemed = false }) {
   });
 
   return (
-    <div className={classNames('navigation', {navigation_themed: isThemed})}>
+    <div className={classNames('navigation', { navigation_themed: isThemed })}>
       <button
         type="button"
         className="navigation__open-button"
-        aria-label="Открыть меню"
+        aria-label={NAV_TEXTS.OPEN_MENU}
         onClick={toggleMenu}
       ></button>
 
@@ -49,17 +50,21 @@ function Navigation({ hasLinkToMain = true, isThemed = false }) {
           <button
             type="button"
             className="navigation__close-button"
-            aria-label="Закрыть меню"
+            aria-label={NAV_TEXTS.CLOSE_MENU}
             onClick={toggleMenu}
           ></button>
 
           <ul className="navigation__list">
             {hasLinkToMain && (
-              <NavigationLink title="Главная" to="/" isLinkToMain />
+              <NavigationLink title={NAV_TEXTS.MAIN} to="/" isLinkToMain />
             )}
-            <NavigationLink title="Фильмы" to="/movies" />
-            <NavigationLink title="Сохранённые фильмы" to="/saved-movies" />
-            <NavigationLink title="Аккаунт" to="/profile" isLinkToProfile />
+            <NavigationLink title={NAV_TEXTS.MOVIES} to="/movies" />
+            <NavigationLink title={NAV_TEXTS.SAVED_MOVIES} to="/saved-movies" />
+            <NavigationLink
+              title={NAV_TEXTS.PROFILE}
+              to="/profile"
+              isLinkToProfile
+            />
           </ul>
         </nav>
       </div>

@@ -1,3 +1,5 @@
+import { MOVIE_API } from './config';
+
 class MoviesApi {
   constructor({ baseUrl }) {
     this._baseUrl = baseUrl;
@@ -16,6 +18,6 @@ class MoviesApi {
   }
 }
 
-const moviesApi = new MoviesApi({ baseUrl: 'https://api.nomoreparties.co' });
+const moviesApi = new MoviesApi({ baseUrl: MOVIE_API.BASE_URL });
 
 export default moviesApi;

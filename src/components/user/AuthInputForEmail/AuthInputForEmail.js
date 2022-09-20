@@ -1,3 +1,4 @@
+import { PLACEHOLDERS } from '../../../utils/config';
 import AuthInput from '../AuthInput/AuthInput';
 
 function AuthInputForEmail({ ...validationParams }) {
@@ -7,7 +8,7 @@ function AuthInputForEmail({ ...validationParams }) {
       type="email"
       name="email"
       required={true}
-      placeholder="mcclane@nakatomi.corp"
+      placeholder={PLACEHOLDERS.EMAIL}
       {...validationParams}
     />
   );

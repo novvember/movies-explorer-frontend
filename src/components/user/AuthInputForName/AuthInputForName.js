@@ -1,3 +1,4 @@
+import { PLACEHOLDERS } from '../../../utils/config';
 import AuthInput from '../AuthInput/AuthInput';
 
 function AuthInputForName({ ...validationParams }) {
@@ -9,7 +10,7 @@ function AuthInputForName({ ...validationParams }) {
       required={true}
       minLength="2"
       maxLength="30"
-      placeholder="Джон Макклейн"
+      placeholder={PLACEHOLDERS.NAME}
       {...validationParams}
     />
   );
