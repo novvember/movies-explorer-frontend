@@ -8,12 +8,10 @@ class MoviesApi {
   async getMovies() {
     const url = `${this._baseUrl}/beatfilm-movies`;
     const res = await fetch(url);
+
+    if (!res.ok) return new Error(res.status);
+
     const data = await res.json();
-
-    if (!res.ok) {
-      return new Error(data.message);
-    }
-
     return data;
   }
 }
