@@ -14,7 +14,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "predeploy": "react-scripts build && cp build/index.html build/404.html",
+    "predeploy": "react-scripts build",
     "deploy": "gh-pages -d build",
     "prod-deploy": "npm run build&&scp -r ./build/* user@84.201.175.25:/home/user/movies-explorer-frontend/build",
     "start": "react-scripts start",
