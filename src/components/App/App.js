@@ -17,7 +17,33 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState();
   const [isLoading, setIsLoading] = React.useState(true);
 
+  const [savedMovies, setSavedMovies] = React.useState(null);
+
   const navigate = useNavigate();
+
+  // Сохраненные фильмы
+  async function handleDeleteSavedMovie(movie) {
+    try {
+      await mainApi.deleteMovie(movie._id);
+
+      setSavedMovies((movies) =>
+        movies.filter((savedMovie) => savedMovie._id !== movie._id),
+      );
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  async function handleAddSavedMovie(movie) {
+    try {
+      const savedMovie = await mainApi.saveMovie(movie);
+      if (savedMovie) {
+        setSavedMovies((movies) => [...movies, savedMovie]);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   // Авторизация при открытии страницы по сохраненному логину
   React.useEffect(() => {
@@ -32,6 +58,8 @@ function App() {
         const res = await mainApi.checkToken(token);
         mainApi.setToken(token);
         setCurrentUser(res);
+        const savedMovies = await mainApi.getSavedMovies();
+        setSavedMovies(savedMovies);
       } catch (err) {
         localStorage.removeItem('token');
         localStorage.removeItem('searchText');
@@ -73,7 +101,11 @@ function App() {
             path="/movies"
             element={
               <ProtectedRoute isLoading={isLoading}>
-                <Movies />
+                <Movies
+                  savedMovies={savedMovies}
+                  onAddSavedMovie={handleAddSavedMovie}
+                  onDeleteSavedMovie={handleDeleteSavedMovie}
+                />
               </ProtectedRoute>
             }
           />
@@ -81,7 +113,10 @@ function App() {
             path="/saved-movies"
             element={
               <ProtectedRoute isLoading={isLoading}>
-                <SavedMovies />
+                <SavedMovies
+                  savedMovies={savedMovies}
+                  onDeleteSavedMovie={handleDeleteSavedMovie}
+                />
               </ProtectedRoute>
             }
           />

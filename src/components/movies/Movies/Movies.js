@@ -4,17 +4,13 @@ import Header from '../../common/Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
 import './Movies.css';
 import moviesApi from '../../../utils/MoviesApi';
-import mainApi from '../../../utils/MainApi';
 import searchMovies from '../../../utils/searchMovies';
 import SearchResults from '../SearchResults/SearchResults';
 import formatMovies from '../../../utils/formatMovies';
 
-function Movies() {
+function Movies({ savedMovies, onAddSavedMovie, onDeleteSavedMovie }) {
   // Данные обо всех фильмах из API
   const [allMovies, setAllMovies] = React.useState(null);
-
-  // Сохраненные фильмы
-  const [savedMovies, setSavedMovies] = React.useState([]);
 
   // Значения параметров поиска при загрузке
   const defaultSearchText = localStorage.getItem('searchText') ?? '';
@@ -89,45 +85,9 @@ function Movies() {
       const savedMovie = savedMovies.find(
         (savedMovie) => savedMovie.movieId === movie.movieId,
       );
-      await deleteSavedMovie(savedMovie);
+      await onDeleteSavedMovie(savedMovie);
     } else {
-      await addSavedMovie(movie);
-    }
-  }
-
-  async function deleteSavedMovie(movie) {
-    try {
-      await mainApi.deleteMovie(movie._id);
-
-      setSavedMovies((movies) =>
-        movies.filter((savedMovie) => savedMovie._id !== movie._id),
-      );
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
-  async function addSavedMovie(movie) {
-    try {
-      const savedMovie = await mainApi.saveMovie(movie);
-      if (savedMovie) {
-        setSavedMovies((movies) => [...movies, savedMovie]);
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
-  React.useEffect(() => {
-    getSavedMovies();
-  }, []);
-
-  async function getSavedMovies() {
-    try {
-      const movies = await mainApi.getSavedMovies();
-      setSavedMovies(movies);
-    } catch (err) {
-      console.error(err);
+      await onAddSavedMovie(movie);
     }
   }
 
