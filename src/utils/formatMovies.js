@@ -1,3 +1,4 @@
+import isURL from 'validator/lib/isURL';
 import { MOVIE_API } from './config';
 
 export default function formatMovies(movie) {
@@ -8,7 +9,9 @@ export default function formatMovies(movie) {
     year: movie.year,
     description: movie.description,
     image: MOVIE_API.MEDIA_BASE_URL + movie.image.url,
-    trailerLink: movie.trailerLink,
+    trailerLink: isURL(movie.trailerLink)
+      ? movie.trailerLink
+      : MOVIE_API.MEDIA_BASE_URL + movie.image.url,
     thumbnail: MOVIE_API.MEDIA_BASE_URL + movie.image.formats.thumbnail.url,
     movieId: movie.id,
     nameRU: movie.nameRU,
