@@ -1,12 +1,13 @@
+import { SEARCH_TEXTS } from '../../../utils/config';
 import './More.css';
 
-function More() {
+function More({ onClick }) {
   return (
-    <section className="more section">
-      <button className="more__button" type="button">
-        Ещё
+    <div className="more section">
+      <button className="more__button" type="button" onClick={onClick}>
+        {SEARCH_TEXTS.MORE_BUTTON}
       </button>
-    </section>
+    </div>
   );
 }
 

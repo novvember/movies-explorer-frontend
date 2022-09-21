@@ -1,5 +1,4 @@
 import AboutProject from '../AboutProject/AboutProject';
-import AuthLinks from '../../common/AuthLinks/AuthLinks';
 import Footer from '../../common/Footer/Footer';
 import Header from '../../common/Header/Header';
 import NavTab from '../NavTab/NavTab';
@@ -10,9 +9,7 @@ import Techs from '../../landing/Techs/Techs';
 function Landing() {
   return (
     <>
-      <Header isThemed={true}>
-        <AuthLinks />
-      </Header>
+      <Header isThemed={true} />
       <main>
         <Promo />
         <NavTab />

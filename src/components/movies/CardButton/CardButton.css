@@ -3,7 +3,7 @@
   border: none;
   cursor: pointer;
   /* Анимация */
-  transition: transform 0.3s, opacity 0.3s, background-color 0.6s linear, color 0.6s linear;
+  transition: transform 0.3s, opacity 0.3s, background-color 0.6s linear;
   /* Текст */
   font-style: normal;
   font-weight: 400;
@@ -31,9 +31,20 @@
   opacity: 0.8;
 }
 
+.card-button:disabled {
+  pointer-events: none;
+  color: transparent;
+  background-image: url(../../../images/icon__loading_black.svg);
+  background-size: 30px auto;
+}
+
 .card-button_type_done {
   background-color: var(--movie-button-done);
   background-image: url(../../../images/icon__done.svg);
+}
+
+.card-button_type_done:disabled {
+  background-image: url(../../../images/icon__loading.svg);
 }
 
 .card-button_type_delete {

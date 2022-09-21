@@ -1,17 +1,18 @@
+import { PLACEHOLDERS } from '../../../utils/config';
 import AuthInput from '../AuthInput/AuthInput';
 
-function AuthInputForName() {
+function AuthInputForName({ ...validationParams }) {
   return (
     <AuthInput
       label="Имя"
-      params={{
-        type: 'text',
-        name: 'name',
-        required: true,
-        minLength: 2,
-        maxLength: 30,
-        placeholder: 'Джон Макклейн',
-      }}
+      type="text"
+      name="name"
+      required={true}
+      minLength="2"
+      maxLength="30"
+      pattern="[A-Za-zА-Яа-яЁё\s-]+"
+      placeholder={PLACEHOLDERS.NAME}
+      {...validationParams}
     />
   );
 }

@@ -3,34 +3,16 @@ import logo from '../../../images/logo.svg';
 import { Link } from 'react-router-dom';
 import SubmitButton from '../SubmitButton/SubmitButton';
 
-function Auth({ mode = 'register', children }) {
-  const MODES = {
-    register: {
-      title: 'Добро пожаловать!',
-      hint: (
-        <p className="auth__hint">
-          Уже зарегистрированы?{' '}
-          <Link to="/signin" className="auth__hint-link">
-            Войти
-          </Link>
-        </p>
-      ),
-      buttonText: 'Зарегистрироваться',
-    },
-    login: {
-      title: 'Рады видеть!',
-      hint: (
-        <p className="auth__hint">
-          Ещё не зарегистрированы?{' '}
-          <Link to="/signup" className="auth__hint-link">
-            Регистрация
-          </Link>
-        </p>
-      ),
-      buttonText: 'Войти',
-    },
-  };
-
+function Auth({
+  title,
+  hint,
+  buttonText,
+  children,
+  isValid,
+  requestError,
+  onSubmit,
+  isLoading,
+}) {
   return (
     <main className="auth content__stretched-element">
       <div className="auth__container">
@@ -41,17 +23,18 @@ function Auth({ mode = 'register', children }) {
             src={logo}
           />
         </Link>
-        <h1 className="auth__title">{MODES[mode].title}</h1>
-        <form className="auth__form">
+        <h1 className="auth__title">{title}</h1>
+        <form className="auth__form" noValidate onSubmit={onSubmit}>
           {children}
-
-          <p className="auth__error">Что-то пошло не так...</p>
+          <p className="auth__request-error">{requestError}</p>
           <SubmitButton
-            title={MODES[mode].buttonText}
+            title={buttonText}
             className="auth__submit-button"
+            isDisabled={!isValid}
+            isLoading={isLoading}
           />
         </form>
-        {MODES[mode].hint}
+        {hint}
       </div>
     </main>
   );

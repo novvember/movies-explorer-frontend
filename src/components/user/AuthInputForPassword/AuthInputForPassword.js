@@ -1,15 +1,15 @@
+import { PLACEHOLDERS } from '../../../utils/config';
 import AuthInput from '../AuthInput/AuthInput';
 
-function AuthInputForPassword() {
+function AuthInputForPassword({ ...validationParams }) {
   return (
     <AuthInput
       label="Пароль"
-      params={{
-        type: 'password',
-        name: 'password',
-        required: true,
-        placeholder: 'akagi',
-      }}
+      type="password"
+      name="password"
+      required={true}
+      placeholder={PLACEHOLDERS.PASSWORD}
+      {...validationParams}
     />
   );
 }

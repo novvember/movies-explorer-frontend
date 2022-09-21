@@ -1,39 +1,16 @@
 import classNames from 'classnames';
 import './CardButton.css';
 
-function CardButton({ className, type, onClick }) {
-  const TYPE_CONFIG = {
-    save: {
-      text: 'Сохранить',
-      className: 'card-button_type_save',
-      alt: null,
-    },
-    done: {
-      text: '',
-      className: 'card-button_type_done',
-      alt: 'Снять отметку с фильма',
-    },
-    delete: {
-      text: '',
-      className: 'card-button_type_delete',
-      alt: 'Удалить фильм из сохранённых',
-    },
-  };
-
+function CardButton({ className, alt, text, onClick, disabled }) {
   return (
     <button
-      className={classNames(
-        className,
-        TYPE_CONFIG[type].className,
-        'card-button',
-      )}
+      className={classNames('card-button', className, 'movie-card__button')}
       type="button"
-      {...(TYPE_CONFIG[type].alt
-        ? { 'aria-label': TYPE_CONFIG[type].alt }
-        : {})}
+      aria-label={alt}
       onClick={onClick}
+      disabled={disabled}
     >
-      {TYPE_CONFIG[type].text}
+      {text}
     </button>
   );
 }
