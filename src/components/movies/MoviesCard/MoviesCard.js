@@ -1,9 +1,9 @@
 import './MoviesCard.css';
 
 import React from 'react';
-import getNumDeclination from '../../../utils/getNumDeclination';
 import GeneralCardButton from '../GeneralCardButton/GeneralCardButton';
 import SavedCardButton from '../SavedCardButton/SavedCardButton';
+import formatMovieDuration from '../../../utils/formatMovieDuration';
 
 function MoviesCard({ movie, isSaved, onClick, isSavedMovieCard = false }) {
   const [isLoading, setIsLoading] = React.useState(false);
@@ -17,13 +17,9 @@ function MoviesCard({ movie, isSaved, onClick, isSavedMovieCard = false }) {
   return (
     <li className="movie-card">
       <h3 className="movie-card__name">{movie.nameRU}</h3>
-      <p className="movie-card__duration">{`${
-        movie.duration
-      } ${getNumDeclination(movie.duration, [
-        'минута',
-        'минуты',
-        'минут',
-      ])}`}</p>
+      <p className="movie-card__duration">
+        {formatMovieDuration(movie.duration)}
+      </p>
       <a
         href={movie.trailerLink}
         className="movie-card__link"
