@@ -6,10 +6,10 @@ function validateEmail(value) {
   return isEmail(value) ? '' : ERROR_MSG;
 }
 
-export default function useForm(initialValues = {}) {
+export default function useForm(initialValues = {}, initialIsValid = false) {
   const [values, setValues] = React.useState(initialValues);
   const [errors, setErrors] = React.useState({});
-  const [isValid, setIsValid] = React.useState(false);
+  const [isValid, setIsValid] = React.useState(initialIsValid);
 
   function handleChange(event) {
     const input = event.target;

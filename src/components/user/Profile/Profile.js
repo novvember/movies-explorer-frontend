@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import React from 'react';
 import CurrentUserContext from '../../../contexts/CurrentUserContext';
 import { PLACEHOLDERS, REQUEST_ERRORS } from '../../../utils/config';
-import useFilledForm from '../../../utils/hooks/useFormWithValidationForProfile';
+import useFilledForm from '../../../utils/hooks/useFilledForm';
 import mainApi from '../../../utils/MainApi';
 import Header from '../../common/Header/Header';
 import SubmitButton from '../SubmitButton/SubmitButton';
