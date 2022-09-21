@@ -119,23 +119,23 @@
   opacity: 0.7;
 }
 
+.profile__input::placeholder {
+  color: var(--on-surface-variant);
+}
+
+.profile__input:where(.profile__input-container:last-of-type .profile__input) {
+  border-bottom-color: transparent;
+}
+
 .profile__input:focus {
   outline: none;
   border-bottom-color: var(--primary);
-}
-
-.profile__input::placeholder {
-  color: var(--on-surface-variant);
 }
 
 .profile__input_type_error,
 .profile__input_type_error:focus {
   color: var(--error);
   border-bottom-color: var(--error);
-}
-
-.profile__input-container:last-of-type .profile__input:not(:focus) {
-  border-bottom-color: transparent;
 }
 
 .profile__input-error {
