@@ -16,7 +16,7 @@ class MainApi {
       body: JSON.stringify({ email, password, name }),
     });
 
-    if (!res.ok) return new Error(res.status);
+    if (!res.ok) throw new Error(res.status);
 
     const data = await res.json();
     return data;
@@ -33,7 +33,7 @@ class MainApi {
       body: JSON.stringify({ email, password }),
     });
 
-    if (!res.ok) return new Error(res.status);
+    if (!res.ok) throw new Error(res.status);
 
     const data = await res.json();
     return data;
@@ -51,7 +51,7 @@ class MainApi {
       headers,
     });
 
-    if (!res.ok) return new Error(res.status);
+    if (!res.ok) throw new Error(res.status);
 
     const data = await res.json();
     return data;
@@ -64,7 +64,7 @@ class MainApi {
       headers: this._authHeaders,
     });
 
-    if (!res.ok) return new Error(res.status);
+    if (!res.ok) throw new Error(res.status);
 
     const data = await res.json();
     return data;
@@ -79,7 +79,7 @@ class MainApi {
       body: JSON.stringify({ name, email }),
     });
 
-    if (!res.ok) return new Error(res.status);
+    if (!res.ok) throw new Error(res.status);
 
     const data = await res.json();
     return data;
@@ -92,7 +92,7 @@ class MainApi {
       headers: this._authHeaders,
     });
 
-    if (!res.ok) return new Error(res.status);
+    if (!res.ok) throw new Error(res.status);
 
     const data = await res.json();
     return data;
@@ -107,7 +107,7 @@ class MainApi {
       body: JSON.stringify(movieData),
     });
 
-    if (!res.ok) return new Error(res.status);
+    if (!res.ok) throw new Error(res.status);
 
     const data = await res.json();
     return data;
@@ -121,7 +121,7 @@ class MainApi {
       headers: this._authHeaders,
     });
 
-    if (!res.ok) return new Error(res.status);
+    if (!res.ok) throw new Error(res.status);
 
     const data = await res.json();
     return data;

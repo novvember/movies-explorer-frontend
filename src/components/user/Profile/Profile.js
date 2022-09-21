@@ -35,7 +35,6 @@ function Profile({ onLogout, onUpdate }) {
       switchEditMode();
       showSuccessMessage();
     } catch (err) {
-      console.log(err);
       let message;
       switch (err.message) {
         case '409':
