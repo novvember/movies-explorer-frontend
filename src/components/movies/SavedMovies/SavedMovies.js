@@ -9,7 +9,7 @@ import './SavedMovies.css';
 function SavedMovies({ savedMovies, onDeleteSavedMovie }) {
   const [foundMovies, setFoundMovies] = React.useState([]);
   const [searchText, setSearchText] = React.useState('');
-  const [areShortiesSeleted, setAreShortiesSeleted] = React.useState(true);
+  const [areShortiesSeleted, setAreShortiesSeleted] = React.useState(false);
 
   function handleSearchFormSubmit({ searchText, areShortiesSeleted }) {
     setAreShortiesSeleted(areShortiesSeleted);

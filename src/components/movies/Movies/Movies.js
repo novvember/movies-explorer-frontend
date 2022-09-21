@@ -15,7 +15,7 @@ function Movies({ savedMovies, onAddSavedMovie, onDeleteSavedMovie }) {
   // Значения параметров поиска при загрузке
   const defaultSearchText = localStorage.getItem('searchText') ?? '';
   const defaultAreShortiesSeleted =
-    JSON.parse(localStorage.getItem('areShortiesSeleted')) ?? true;
+    JSON.parse(localStorage.getItem('areShortiesSeleted')) ?? false;
   const defaultFoundMovies =
     JSON.parse(localStorage.getItem('foundMovies')) ?? [];
 

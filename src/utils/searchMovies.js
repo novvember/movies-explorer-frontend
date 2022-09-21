@@ -4,9 +4,9 @@ function searchMovies(movies, searchText, areShortiesSeleted) {
   if (!movies.length) return movies;
   let foundMovies = movies;
 
-  if (!areShortiesSeleted) {
+  if (areShortiesSeleted) {
     foundMovies = foundMovies.filter(
-      (movie) => movie.duration > SEARCH_PARAMS.SHORTIES_MAX_DURATION,
+      (movie) => movie.duration <= SEARCH_PARAMS.SHORTIES_MAX_DURATION,
     );
   }
 
