@@ -76,6 +76,7 @@ function Profile({ onLogout, onUpdate }) {
                 name="name"
                 minLength="2"
                 maxLength="30"
+                pattern="[A-Za-zА-Яа-яЁё\s-]+"
                 required={true}
                 placeholder={PLACEHOLDERS.NAME}
                 value={values.name ?? ''}
