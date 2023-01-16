@@ -30,7 +30,7 @@ export const MOVIE_API = {
 };
 
 export const MAIN_API = {
-  BASE_URL: 'https://api.movies.novvember.nomoredomains.sbs',
+  BASE_URL: 'https://movies-explorer-api.onrender.com',
   AUTH_HEADERS: {
     'Content-Type': 'application/json',
     Authorization: 'jwt token here',
