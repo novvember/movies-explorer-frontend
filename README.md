@@ -19,8 +19,6 @@
 
 На GitHub Pages: [`movies.novvember.tk`](https://movies.novvember.tk/)
 
-На отдельном сервере в Яндекс.Облаке: [`movies.novvember.nomoredomains.sbs`](https://movies.novvember.nomoredomains.sbs)
-
 ## Макет в Figma
 
 [`figma.com/file/Bb8b92xns1lLgMiKkTwRPp/Diploma-(Kalugin)?node-id=891%3A3857`](<https://www.figma.com/file/Bb8b92xns1lLgMiKkTwRPp/Diploma-(Kalugin)?node-id=891%3A3857>)
